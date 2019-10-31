@@ -1,0 +1,10 @@
+package week9;
+
+import java.text.DecimalFormat;
+
+public class FormatUtil {
+	public static String number(long number,String patter) {
+		DecimalFormat format = new DecimalFormat(patter);
+		return format.format(number);
+	}
+}

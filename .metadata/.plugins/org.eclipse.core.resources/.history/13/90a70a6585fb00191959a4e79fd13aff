@@ -1,0 +1,12 @@
+package week9;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Thermometer {	
+	private Map<String,Double> locationMap = new HashMap<String,Double>();
+	public void setCalsius(String location, Double value) {
+		locationMap.put(location, value);
+	}
+	
+}

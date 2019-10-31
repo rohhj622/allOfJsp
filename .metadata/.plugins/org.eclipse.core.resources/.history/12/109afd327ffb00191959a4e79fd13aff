@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="elResult.jsp">
+		id = <input type="text" name="id"><br><BR>
+		Select sports
+		football <input type="checkbox" name="sports" value = "축구">
+		basketball <input type="checkbox" name="sports" value = "농구">
+		baseball <input type="checkbox" name="sports" value = "야구">
+		pingpong <input type="checkbox" name="sports" value = "탁">
+		<br><br>
+		<input type="submit" value="확인">
+		<input type="reset" value="취소'>
+	</form>
+</body>
+</html>
