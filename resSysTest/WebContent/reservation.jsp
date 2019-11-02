@@ -25,7 +25,7 @@
 		<td colspan="2">
 			<!-- Menu -->
 			<p id="rsP"> 내역 보기</p>
-			<jsp:include page="menu.jsp"/>
+			<jsp:include page="/includer/menu.jsp"/>
 		</td>
 	</tr>
 	<tr>

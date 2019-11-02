@@ -67,7 +67,7 @@
 </style>
 </head>
 <body>
-	<% String mem_id = request.getParameter("mem_id"); %>
+	<% String mem_id = session.getAttribute("mem_id").toString(); %>
 	
 	<!-- Calendar -->
 	<table class="tb1" >
@@ -106,8 +106,8 @@
 	    while (cal.get(Calendar.MONTH) == month) {
 	    	int i = 0;
 	%>		
-	    <td class="tb2-td"> 
-	    	<a href="reserve.jsp?year=<%=year %>&month=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>&mem_id=<%= mem_id %>">
+	    <td class="tb2-td" style="cursor:pointer;" onClick="location.href='reserve.jsp?year=<%=year %>&month=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>&mem_id=<%= mem_id %>';"> 
+	    	<a >
 	    		<%= cal.get(Calendar.DATE) %> 
 	    	</a>
 	    		

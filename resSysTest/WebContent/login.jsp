@@ -12,6 +12,7 @@
     p{
         color:#000080;
         font-weight: 700;
+       
         font-size: 10em;
         text-align: center;
         font-family: 'Shadows Into Light', cursive;
@@ -71,7 +72,7 @@
 <!-- Login Page // first -->
 <p>"Sky Music" </p>
 <div>
-	<form action="main.jsp" method="post">
+	<form action="loginOk.jsp" method="post">
 		ID : <input type="text" name="mem_id" id="id01"><br>
 		PW : <input type="password" name="mem_pw" id="id01"><br>
 		<input type="submit" value="login" id="id02">

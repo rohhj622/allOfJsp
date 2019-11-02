@@ -47,13 +47,15 @@
 	<tr>
 		<td colspan="2">
 			<p id="rsP">예약 하기</p>
-			<jsp:include page="menu.jsp"></jsp:include>
+			<jsp:include page="includer/menu.jsp"></jsp:include>
 			
 		</td>
 	</tr>
 	
 	<tr>
-		<td class="tb3-td"><jsp:include page="calendar.jsp" flush="false"/></td>
+		<td class="tb3-td">
+			<jsp:include page="/includer/calendar.jsp" flush="false"/>
+		</td>
 	
 	
 	
@@ -70,7 +72,7 @@
 	
 	
 <%
-	/* request  받아오기.  */
+	/* request  받아오기. userMain에서 받아옴   */
 
 	String year = request.getParameter("year");
 	String month = request.getParameter("month");
@@ -128,7 +130,7 @@
 	try{
 		
 		Connection conn = DriverManager.getConnection(url,id,pass);	
-		String sql2 = "select mem_instrument from SkyMusic.member where mem_id like '"+mem_id+"%'"; 
+		String sql2 = "select mem_instrument from SkyMusic.member where mem_id ='"+mem_id+"'"; 
 		PreparedStatement pstmt1 = conn.prepareStatement(sql2);
 
 		ResultSet rs = pstmt1.executeQuery(sql2);
