@@ -85,3 +85,14 @@
 0:0:0:0:0:0:0:1 - - [31/Oct/2019:12:21:14 +0900] "GET /week9/streamApi.jsp HTTP/1.1" 200 287
 0:0:0:0:0:0:0:1 - - [31/Oct/2019:12:21:14 +0900] "GET /week9/streamApi.jsp HTTP/1.1" 200 287
 0:0:0:0:0:0:0:1 - - [31/Oct/2019:13:26:25 +0900] "GET /week9/streamApi.jsp HTTP/1.1" 200 287
+127.0.0.1 - - [31/Oct/2019:23:19:34 +0900] "GET / HTTP/1.1" 404 1115
+0:0:0:0:0:0:0:1 - - [31/Oct/2019:23:19:35 +0900] "GET /week9/calResult2.jsp HTTP/1.1" 200 156
+0:0:0:0:0:0:0:1 - - [31/Oct/2019:23:19:35 +0900] "GET /favicon.ico HTTP/1.1" 404 1126
+127.0.0.1 - - [31/Oct/2019:23:45:53 +0900] "GET / HTTP/1.1" 404 1115
+0:0:0:0:0:0:0:1 - - [31/Oct/2019:23:45:54 +0900] "GET /resSysTest/WEB-INF/lib/mysqlDB.jsp HTTP/1.1" 404 1086
+127.0.0.1 - - [31/Oct/2019:23:48:05 +0900] "GET / HTTP/1.1" 404 1115
+0:0:0:0:0:0:0:1 - - [31/Oct/2019:23:48:05 +0900] "GET /resSysTest/WEB-INF/lib/mysqlDB.jsp HTTP/1.1" 404 1086
+0:0:0:0:0:0:0:1 - - [31/Oct/2019:23:48:19 +0900] "GET /resSysTest/WEB-INF/lib/mysqlDB.jsp HTTP/1.1" 404 1086
+0:0:0:0:0:0:0:1 - - [31/Oct/2019:23:48:20 +0900] "GET /resSysTest/WEB-INF/lib/mysqlDB.jsp HTTP/1.1" 404 1086
+0:0:0:0:0:0:0:1 - - [31/Oct/2019:23:48:20 +0900] "GET /resSysTest/WEB-INF/lib/mysqlDB.jsp HTTP/1.1" 404 1086
+0:0:0:0:0:0:0:1 - - [31/Oct/2019:23:48:20 +0900] "GET /resSysTest/WEB-INF/lib/mysqlDB.jsp HTTP/1.1" 404 1086
