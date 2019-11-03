@@ -111,7 +111,7 @@
 					+"' and res_state='using' group by acd_no having count(*) =2) order by acd_startTime";
 		}
 		else{
-			System.out.println("i am here2");
+			
 			sql3 = "SELECT * FROM SkyMusic.academy where acd_no like '%_w%' and acd_name = '"+instrument
 					+"' and acd_no not in (select  acd_no from SkyMusic.reservation where res_date='"+date
 					+"' and res_state='using' group by acd_no having count(*) =2) order by acd_startTime";
@@ -123,6 +123,8 @@
 		while(rs.next()){
 			String text = rs.getString("acd_no")+"||" + rs.getString("acd_startTime") +"~" +  rs.getString("acd_endTime");			
 			String sText = instrument +" | "+ rs.getString("acd_startTime") +"~" +  rs.getString("acd_endTime");
+			
+			
 %>
 			<%-- <p><%=sText %></p> --%>
 			<form action="taskRes.jsp" onSubmit="return chk()">
