@@ -7,45 +7,23 @@
 <title>SKY MUSIC </title>
 </head>
 <body>
-<!-- After Login, Main Page -->
+<!-- After Login, Login check and then move to reserve.jsp -->
 	<%
 		String mem_id = request.getParameter("mem_id");
-		String mem_pw = request.getParameter("mem_pw");
-		
 		
 		if(mem_id.equals("rohhj622")){
 			/* out.println("학생"); */	
 			session.setAttribute("mem_id",mem_id);
-			response.sendRedirect("reserve.jsp");
-	%>
-<%-- 			<jsp:include page="menu.jsp"/>
-			<jsp:include page="reserve.jsp"/>
-			<jsp:include page="calendar.jsp"/>
-				<jsp:param name="mem_id" value="<%=mem_id%>"/> --%>
-			
-	<%
+			response.sendRedirect("firstMain.jsp");
 		}
 		else if(mem_id.equals("rohwk129")){
 			session.setAttribute("mem_id",mem_id);
-			response.sendRedirect("reserve.jsp");
-	%>		
-	
-<%-- 			<jsp:include page="menu.jsp"/>
-			<jsp:include page="reserve.jsp"/>
-			<jsp:include page="calendar.jsp"/>
-				<jsp:param name="mem_id" value="<%=mem_id%>"/> --%>
-			
-	
-	<% 	}
+			response.sendRedirect("firstMain.jsp");
+		}
 		else{
 			session.setAttribute("mem_id",mem_id);
-			response.sendRedirect("reserve.jsp");
-	%>
-<%-- 			<jsp:include page="adminMain.jsp"/>
-			
-				<jsp:param name="mem_id" value="<%=mem_id%>"/> --%>
-		
-	<% 
+			response.sendRedirect("firstMain.jsp");
+
 		}
 	%>
 	

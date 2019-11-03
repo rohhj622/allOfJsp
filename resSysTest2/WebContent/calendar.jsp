@@ -38,44 +38,33 @@
 <head>
 <meta charset="UTF-8">
 <title>SkyMusic - Calendar</title>
-<style type="text/css">
-	.tb1{
-		margin-left:auto;
-    	margin-right:auto;
-		text-align: center;
-		
+
+<script type="text/javascript">
+	var bDisplay = true;
+	function doDisplay(){
+	    var con = document.getElementById("myDiv");
+
+	    if(con.style.display=='block'){
+	    }else{
+	        con.style.display = 'block';
+	    }
 	}
-	.tb2{
-		text-align: center;
-	}
-	.tb2 td{
-		width:64px;
-		height:70px;
-	}
-	.tb2-td:hover {
-		background-color: #cce0ff;
-	}
-	.tb2 td:active{
-		background-color: #cce0ff;
-	}
-	a { text-decoration: none; }
-	a:link { color: black; }
-	a:visited { color: black; }
-	a:hover { color: black; }
-	a:active { color: red; }
-	
-</style>
+
+</script>
+
+
 </head>
 <body>
-	<% String mem_id = session.getAttribute("mem_id").toString(); %>
+<%-- <jsp:include page="menu.jsp"/> --%>
+<% String mem_id = session.getAttribute("mem_id").toString(); %>
 	
 	<!-- Calendar -->
-	<table class="tb1" >
+	<table class="tb1" border="1" >
 	<tr>
 	    <td>
-		    <a href="./reserve.jsp?y=<%=prevYear%>&m=<%=prevMonth%>">◁</a> 
+		    <a href="./test01.jsp?y=<%=prevYear%>&m=<%=prevMonth%>">◁</a> 
 		    <%=year%>년 <%=month+1%>월 
-		    <a href="./reserve.jsp?y=<%=nextYear%>&m=<%=nextMonth%>">▷</a>
+		    <a href="./test01.jsp?y=<%=nextYear%>&m=<%=nextMonth%>">▷</a>
 	    </td>
 	</tr>
 	<tr>
@@ -107,7 +96,8 @@
 	    	int i = 0;
 	%>		
 	    <td class="tb2-td" style="cursor:pointer;" > 
-	    	<a href="reserve.jsp?year=<%=year %>&month=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>">
+	    	<a href="test01.jsp?y=<%=year %>&m=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>" >
+	    		<%--  href="javascript:doDisplay();" --%>
 	    		<%= cal.get(Calendar.DATE) %> 
 	    	</a>
 	    		
@@ -141,6 +131,10 @@
 	    </td>
 	</tr>
 	</table>
+<%-- 	<div id="myDiv"  >
+		<%=year %><%=month %><%=cal.get(Calendar.DATE) %>
+	<div> --%>
+	
 	
 </body>
 </html>

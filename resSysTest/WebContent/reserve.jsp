@@ -7,8 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SkyMusic - Reserve</title>
-
+<title>SkyMusic - Reserve</title> 
 <style>
 	#rsP{
 		text-align: center;
@@ -81,8 +80,8 @@
 	mem_id = session.getAttribute("mem_id").toString();
 	date = year+"-" + month +"-"+ day; //선택 날짜
 	
-/* 	System.out.println(mem_id);
-	System.out.println(date); */
+ 	System.out.println(mem_id);
+	System.out.println(date); 
 	
 	/*  DB  건드리기  */
 	request.setCharacterEncoding("utf8");
@@ -115,18 +114,15 @@
 					break;
 			}
 		}
-		/* System.out.println(isWeek); */
 		
+		rs.close();
 		pstmt.close();
 		conn.close();
 		
 	}catch(SQLException e){
 		System.out.println(e);
 	}
-		/* sql = "SELECT mem_instrument from member where mem_id='"+mem_id+"'"; */
-		// 악기 가져오기 - varchar
-		
-		/* String sql2 = String.format("SELECT mem_instrument from member where  mem_id=%s",mem_id); */
+
 	try{
 		
 		Connection conn = DriverManager.getConnection(url,id,pass);	
@@ -139,18 +135,19 @@
 			instrument = rs.getString(1); 
 		} 
 		
+		rs.close();
 		pstmt1.close();
 		conn.close();
 		
 	}catch(SQLException e){
 		System.out.println(e);
 	}
-		// 평일 이면 
 	try{
 		Connection conn = DriverManager.getConnection(url,id,pass);
 		String sql3;
 		String state ="unusing";
-		
+
+		// 평일 이면 true 
 		if(isWeek.equals("true")){
 			sql3 = "Select * from  SkyMusic.academy where acd_no like '%_d%' and acd_name like '"+instrument+"' and acd_no not in (select distinct acd_no from SkyMusic.reservation where res_date='"+date+"' and res_count=0)";	
 		}else{
@@ -164,11 +161,10 @@
 
 %>
 <td>
-<p id="d1"><%=date %></p>
-<table class="tb4">
+	<p id="d1"><%=date %></p>
 	
+<table class="tb4">	
 <%		
-		
 
 		while(rs.next()){			
 			String text = rs.getString("acd_no")+"||" + rs.getString("acd_startTime") +"~" +  rs.getString("acd_endTime");	
@@ -177,7 +173,7 @@
 %>
 	<tr>
 		<td class="tb4-td">
-			<form name="form1" action="taskRes.jsp" method="post" onsubmit="return doRes()">
+			<form name="form1" action="taskResTest.jsp" method="post" onsubmit="return doRes()">
 				<input type="hidden" name="date" value="<%=date %>">
 				<input type="hidden" name="mem_instrument" value="<%=instrument %>">
 				<input type="hidden" name="isWeek" value="<%=isWeek %>">
@@ -187,13 +183,14 @@
 			</form>
 		</td>
 	</tr>
-<% 		}
+<% 		
+		}
 
 		pstmt2.close();
 		conn.close();
 		
 	}catch(SQLException e){
-		System.out.println(e);
+		System.out.println("2"+e);
 	}
 %>
 </table>
