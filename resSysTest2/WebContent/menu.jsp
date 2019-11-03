@@ -17,12 +17,12 @@
 <table>
 	<tr>
 		<td>
-			<form action="reserve.jsp" method="post">
+			<form action="test01.jsp" method="post">
 				<input id="ipM" type="submit" value="예약">
 			</form>
 		</td>
 		<td>
-			<form action="reservation.jsp" method="post">
+			<form action="test02.jsp" method="post">
 				<input id="ipM" type="submit" value="내역" >
 			</form>	
 		</td>

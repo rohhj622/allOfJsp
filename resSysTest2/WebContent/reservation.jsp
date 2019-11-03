@@ -1,42 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.sql.*"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<script type="text/javascript">
-	function chk() {
-		var r = confirm("예약 하시겠습니까?");
-		
-		return r;
-	}
-</script>
-
 </head>
 <body>
 <%!
 	int weekday; //0~4 평일, 5~6 주말
 	String isWeek;
 	String instrument;
-	String mem_id;
-	String year;
-	String month;
-	String day;
+	//String mem_id;
+	//String year;
+	//String month;
+	//String day;
 %>
 <%
 	/* 
-		1. 선택한 날짜가 주말인지 평일인지 알아내기.  sql
-		2. 그 사람의 악기가 무엇인지 알아내기.  sql2
-		3. 그 악기와 날짜에 맞춰서 연습실 보여주기. sql3
+		1.날짜 클릭한거에 맞춰서 그사람의 내역 보여주기.
 		
 	*/
 	
-	mem_id = session.getAttribute("mem_id").toString();
-	year = request.getParameter("y");
-	month = request.getParameter("m");
+	String mem_id = session.getAttribute("mem_id").toString();
+	String year = request.getParameter("y");
+	String  month = request.getParameter("m");
 	
 	if(month!=null && Integer.parseInt(month)<10){
 		month = "0" +month;
@@ -44,7 +33,7 @@
 	
 	System.out.println(month);
 	
-	day = request.getParameter("day");
+	String day = request.getParameter("day");
 	
 	if(day ==null){
 		return;
@@ -56,7 +45,7 @@
 	System.out.println("선택 날 : "+date);
 %>
 	<p><%=date %></p>
-<% 
+<%-- <% 
 	request.setCharacterEncoding("utf8"); 
 	
 	Class.forName("com.mysql.cj.jdbc.Driver");	
@@ -65,7 +54,7 @@
 	String pass = "shguswls12";
 	
 	try{
-		/* 1  */
+		/* 1 */
 		Connection conn = DriverManager.getConnection(url,id,pass);
 		String sql = "select weekDay(?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -124,16 +113,13 @@
 			String text = rs.getString("acd_no")+"||" + rs.getString("acd_startTime") +"~" +  rs.getString("acd_endTime");			
 			String sText = instrument +" | "+ rs.getString("acd_startTime") +"~" +  rs.getString("acd_endTime");
 %>
-			<%-- <p><%=sText %></p> --%>
-			<form action="taskRes.jsp" onSubmit="return chk()">
-				<input type="hidden" name="date" value="<%=date %>">
-				<input type="hidden" name="instrument" value="<%=instrument %>">
-				<input type="hidden" name="isWeek" value="<%=isWeek %>">
-				<input type="hidden" name="text" value="<%=text %>">
+			<p><%=sText %></p> --%>
+			<form action="chkRes.jsp" onSubmit="return chk()">
+				<%-- <input type="hidden" name="date" value="<%=date %>"> --%>
 				
-				<input type="submit" value="<%=sText %>"><br>
+				<input type="submit" value="<%=date %>"><br>
 			</form>
-			
+<%-- 			
 <% 			
 		}
 		
@@ -145,10 +131,6 @@
 	
 
 	
-	
-%>
-
-	
-	
+%> --%>
 </body>
 </html>

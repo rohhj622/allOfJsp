@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SkyMusic - Reserve</title>
+<title>SkyMusic - Reservation</title>
 </head>
 <body>
-<table border ="1">
+	<table border ="1">
 	<tr >
 		<td colspan="2">
 			<jsp:include page="menu.jsp"/>
@@ -15,13 +15,12 @@
 	</tr>
 	<tr>
 		<td>
-			<jsp:include page="calendar.jsp"/>
+			<jsp:include page="calendar2.jsp"/>
 		</td>
 		<td>
-			<jsp:include page="reserve.jsp"/>
+			<jsp:include page="reservation.jsp"/>
 		</td>
 	</tr>
 </table>
-
 </body>
 </html>
