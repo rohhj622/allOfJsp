@@ -67,7 +67,7 @@
 	try{
 		/* 1 */
 		Connection conn = DriverManager.getConnection(url,id,pass);
-		String sql = "select acd_no,acd_startTime,acd_endTime from SkyMusic.academy where acd_no in(select acd_no from SkyMusic.reservation where mem_id='"+mem_id+"' and res_date = '"+date+"');";
+		String sql = "select acd_no,acd_startTime,acd_endTime from SkyMusic.academy where acd_no in(select acd_no from SkyMusic.reservation where mem_id='"+mem_id+"' and res_date = '"+date+"' order by acd_startTime);";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -97,6 +97,10 @@
 <% 
 			}while(rs.next());
 		}
+		
+		rs.close();
+		pstmt.close();
+		conn.close();
 		
 	}catch(SQLException e){
 		System.out.println("1:"+e);

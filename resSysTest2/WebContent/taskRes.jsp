@@ -1,31 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.util.Date" %>  
+<%@ page import ="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Reserving...</title>
 </head>
 <body>
 
-<%!
-	String mem_id;
-
-	String date;
-	String instrument;
-	String isWeek;
-	String acd_no;
-	
-%>
 <%
-	mem_id = session.getAttribute("mem_id").toString();
-	date = request.getParameter("date");
-	instrument = request.getParameter("instrument");
-	isWeek = request.getParameter("isWeek");
-	acd_no = request.getParameter("text").substring(0, 4); 
+
+	String mem_id = session.getAttribute("mem_id").toString();
+
+	String date = request.getParameter("date");
+	String instrument = request.getParameter("instrument");
+	String isWeek = request.getParameter("isWeek");
+	String acd_no = request.getParameter("text"); 
+	//String acd_startTime = request.getParameter("acd_starTime");
 	
-	System.out.println("taskRes var = "+mem_id+","+date+","+instrument+","+isWeek+","+acd_no);
+	//System.out.println("taskRes var = "+mem_id+","+date+","+instrument+","+isWeek+","+acd_no);
 	
 	
 	request.setCharacterEncoding("utf8"); 
@@ -42,14 +38,20 @@
 	String url = "jdbc:mysql://localhost/SkyMusic?characterEncoding=UTF-8 & serverTimezone=UTC";
 	String id = "HJ";
 	String pass = "shguswls12";
-	
+
 	try{
-		/* 1 */
+		
 		Connection conn = DriverManager.getConnection(url,id,pass);
+		
+	
+		/* 0 */
+
+
+		
+		/* 1 */
 		String sql = "select mem_penalty from SkyMusic.member where mem_id = '"+mem_id+"'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		ResultSet rs = pstmt.executeQuery();	
+		ResultSet rs = pstmt.executeQuery(sql);	
 		int penalty=0;
 		
 		if(rs.next()){
@@ -72,13 +74,13 @@
 		
 		rs = pstmt.executeQuery(sql2);
 		
-		int b=0;
+		int t=0;
 		
 		if(rs.next()){
-			b = rs.getInt(1);
+			t = rs.getInt(1);
 		}
 		
-		if(b==2){
+		if(t==2){
 %>
 			<script>
 				alert("예약 가능 횟수를 초과하였습니다.");
@@ -118,6 +120,9 @@
 			location.href="test01.jsp";
 		</script>
 <% 
+		rs.close();
+		pstmt.close();
+		conn.close();
 		
 	
 	}catch(SQLException e){

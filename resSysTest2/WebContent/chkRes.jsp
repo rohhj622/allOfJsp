@@ -43,14 +43,11 @@
 	String acd_no = request.getParameter("acd_no");
 	String acd_startTime = request.getParameter("acd_startTime");
 	
-	System.out.println(acd_no);
+	//System.out.println(acd_no);
 	
 	Date now = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
 	SimpleDateFormat sf2 = new SimpleDateFormat("HH:mm:ss");
-	
-	Date a = sf2.parse(acd_startTime); // 예약한 시간 
-	Date b = sf2.parse(sf2.format(now)); // 현재 시간 
 
 	
 	/* 
@@ -61,8 +58,30 @@
 		
 	*/
 	
+	/* 0 */
+	Date nowD = sf.parse(sf.format(now)); //지금 날짜 
+	Date selD = sf.parse(date); // 선택한 날짜 
+	
+	long subR = selD.getTime() - nowD.getTime();
+	
+	if(subR<0){
+		System.out.println("검사");
+%>
+		<script>
+			alert("이미 지나간 날짜는 취소가 불가합니다.");
+			location.href="test02.jsp";	
+		</script>
+<% 	
+	}
+	
+	
+	
+	/* 1 */
 	/* 이미 지나간 시간대 선택  */
-	if(a.getTime()-b.getTime()<0){	
+	Date a = sf2.parse(acd_startTime); // 예약한 시간 
+	Date b = sf2.parse(sf2.format(now)); // 현재 시간 
+	
+	if(a.getTime()-b.getTime()<0 && date.equals(sf.format(now))){	
 %>
 		<script>
 			alert("이미 지나간 시간입니다.");

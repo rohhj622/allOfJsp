@@ -5,13 +5,17 @@
 		<item key="DIALOG_Y_ORIGIN" value="340"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="System"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="system"/>
+			<item value="systme"/>
+			<item value="insert"/>
+			<item value="sf"/>
 			<item value="test01"/>
 			<item value="test"/>
 			<item value="calendar.jsp"/>
@@ -23,10 +27,6 @@
 			<item value="date"/>
 			<item value="rs"/>
 			<item value="rs."/>
-			<item value="session"/>
-			<item value="seesion"/>
-			<item value="button"/>
-			<item value="mem_id"/>
 		</list>
 		<list key="replacehistory">
 			<item value="#id02"/>
@@ -34,8 +34,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="929"/>
-		<item key="DIALOG_Y_ORIGIN" value="58"/>
+		<item key="DIALOG_X_ORIGIN" value="896"/>
+		<item key="DIALOG_Y_ORIGIN" value="255"/>
 		<item key="DIALOG_WIDTH" value="294"/>
 		<item key="DIALOG_HEIGHT" value="408"/>
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
