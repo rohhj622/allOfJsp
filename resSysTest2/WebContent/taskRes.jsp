@@ -21,14 +21,14 @@
 	String acd_no = request.getParameter("text"); 
 	//String acd_startTime = request.getParameter("acd_starTime");
 	
-	//System.out.println("taskRes var = "+mem_id+","+date+","+instrument+","+isWeek+","+acd_no);
+	System.out.println("taskRes var = "+mem_id+","+date+","+instrument+","+isWeek+","+acd_no);
 	
 	
 	request.setCharacterEncoding("utf8"); 
 	
 	/*  
-		1. 페널티가 %5 == 0 인가?
-		2. 하루 2회예약을 다 하였는가?
+		1. 페널티가 == 5 인가?
+		2. 하루 2회 예약을 다 하였는가?
 		3. 이미 예약한 시간인가?
 		4. 예약할건데, 이미 하나정도는 예약이 되어있나? 있으면 그냥 ,없으면 추가하고  ㄱ 
 	*/
@@ -58,7 +58,7 @@
 			penalty = rs.getInt(1);
 		}	
 		System.out.println(penalty);
-		if(penalty % 5 == 0){
+		if(penalty == 5){
 %>
 			<script>
 				alert("페널티 5회로 예약 불가합니다.");
@@ -90,22 +90,23 @@
 		}
 		
 		/* 3 */
-		String sql3 = "select * from SkyMusic.reservation where mem_id = '"+mem_id+"' and res_date='"+date+"' and acd_no='"+acd_no+"'";
+		String sql3 = "select count(*) from SkyMusic.reservation where mem_id = '"+mem_id+"' and res_date='"+date+"' and acd_no='"+acd_no+"'";
 		pstmt = conn.prepareStatement(sql3);
 		
 		rs = pstmt.executeQuery(sql3);
+		int k=0;
 		
 		if(rs.next()){
-			String str = rs.getString(1);
-			if(str.isEmpty()){
+			k = rs.getInt(1);
+		}
+		if(k == 1){
 %>
-				<script>
-					alert("이미 예약한 시간입니다.");
-					location.href="test01.jsp";
-				</script>
+			<script>
+				alert("이미 예약한 시간입니다.");
+				location.href="test01.jsp";
+			</script>
 <% 
-				
-			}
+							
 		}
 		
 		/* 4 */

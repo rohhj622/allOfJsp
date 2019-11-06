@@ -92,6 +92,7 @@
 	try{
 		/* 1 */
 		Connection conn = DriverManager.getConnection(url,id,pass);
+		
 		String sql = "select weekDay(?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,date);
@@ -119,13 +120,13 @@
 		String sql2 = "select mem_instrument from SkyMusic.member where mem_id='"+mem_id+"'";
 		//System.out.println(mem_id);
 		
-		pstmt = conn.prepareStatement(sql);
+		pstmt = conn.prepareStatement(sql2);
 		rs = pstmt.executeQuery(sql2);
 		
 		if(rs.next()){
 			instrument = rs.getString(1);		
 		}
-		//System.out.println(instrument);
+		System.out.println(instrument);
 		
 		/* 3 */
 		String sql3;
