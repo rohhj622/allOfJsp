@@ -1,5 +1,0 @@
-package week9;
-
-public class Thermometer {	
-	private Map<String,Double> locationMap = new HadhMap<String,Doubel>;
-}
