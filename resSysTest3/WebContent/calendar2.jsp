@@ -121,7 +121,7 @@
 	    	{ //이번달인데 다음날둘.. 2주간만 가능잼. 
 	%>		
 			    <td class="tb2-td" style="cursor:pointer;" > 
-			    	<a href="test01.jsp?y=<%=year %>&m=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>" >
+			    	<a href="test02.jsp?y=<%=year %>&m=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>" >
 			    		
 			    		<%= cal.get(Calendar.DATE) %> 
 			    	</a>

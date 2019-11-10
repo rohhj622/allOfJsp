@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>  
@@ -7,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Calcelling...</title>
 </head>
 <body>
 <%!
@@ -28,6 +29,7 @@
 	
 	try{
 		/* 1 */
+		/* 현재 페널티 가져오기.  */
 		String sql = "select mem_penalty from SkyMusic.member where mem_id = '"+mem_id+"'";
 		pstmt = conn.prepareStatement(sql);
 		
@@ -48,10 +50,20 @@
 	String acd_startTime = request.getParameter("acd_startTime"); // 그 시작 시간 
 	
 	//System.out.println(acd_no);
-	
+	Calendar cal = Calendar.getInstance();
 	Date now = new Date();
+
 	SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
 	SimpleDateFormat sf2 = new SimpleDateFormat("HH:mm:ss");
+
+	/* 페널티 처리를 위한 날짜 설정  */
+	cal.setTime(new Date());
+	cal.add(Calendar.DATE, 7);	
+ 
+	String pDate = sf.format(cal.getTime()); //혹시나 페널티받을 차례라면 이때 까지 예약못하게 할 날짜 
+    
+    cal.add(Calendar.DATE, -7); //다시 되돌리기.
+    
 
 	
 	/* 
@@ -60,22 +72,6 @@
 		2. 취소 유무 물어보고 한다하면 내역에서 지우기 & 패널티 처리하기.
 		
 	*/
-	
-	/* 0 */
-/* 	Date nowD = sf.parse(sf.format(now)); //지금 날짜 
-	Date selD = sf.parse(date); // 선택한 날짜 
-	
-	long subR = selD.getTime() - nowD.getTime();
-	
-	if(subR<0){
-		System.out.println("검사");
-
-		<script>
-			alert("이미 지나간 날짜는 취소가 불가합니다.");
-			location.href="test02.jsp";	
-		</script>
-	
-	} */
 	
 	
 	
@@ -94,9 +90,9 @@
 	}
 	
 	boolean okP = false; // true -> penalty-1
-
+	
 	if(date.equals(sf.format(now))){
-		okP = true; //페널테 받지만 취소할거.
+		okP = true; //페널티 받지만 취소할거.
 %>
 		<script>
 			var con = confirm("지금 취소하시면 페널티 1점이 추가됩니다.\n 진행하시겠습니까? (현재 패널티 : "+<%=penalty%>+" 점)");
@@ -122,29 +118,63 @@
 	
 	/* 2 */
 	//본격 지우기 시작.
-	
+	boolean pStart = false; // 페널티 받기 시작하는지 알려줌. false면 안받아.
 	try{
 		/* 일단 지움. */
 		String sql1 = "delete from SkyMusic.reservation where mem_id = '"+mem_id+"' and res_date='"+date+"' and acd_no='"+acd_no+"'";
-		pstmt = conn.prepareStatement(sql1);
-		
+		pstmt = conn.prepareStatement(sql1);	
 		pstmt.executeUpdate(sql1);	
-	
+		
+		/* 당일 취소로, 페널티 점수 1점 추가. */		
 		if(true == okP){
 			String sql2 = "update SkyMusic.member set mem_penalty = mem_penalty+1 where mem_id='"+mem_id+"'";
 			pstmt = conn.prepareStatement(sql2);			
 			pstmt.executeUpdate(sql2);	
+			
+			/* 업뎃 된 페널티 가져오기  */
+			String sql3 = "select mem_penalty from SkyMusic.member where mem_id='"+mem_id+"'";
+			pstmt = conn.prepareStatement(sql3);	
+			rs = pstmt.executeQuery(sql3);	
+
+			if(rs.next()){
+				penalty = rs.getInt(1);
+			}
+			
+			if( penalty == 5 ){
+				/* 업뎃된 페널티가 5점이면, 현재날짜 +7 한 date를 mem_pDate에 넣기. mem_accP에 페널티값 넣고, 현재 페널티는 0으로 변경. */
+				String sql4 = "update SkyMusic.member set mem_accP = mem_accP+ 5, mem_pDate='"+pDate+"', mem_penalty=0, where mem_id='"+mem_id+"'";	
+				
+				pstmt = conn.prepareStatement(sql4);			
+				pstmt.executeUpdate(sql4);	
+				
+				pStart = true;
+				
+			}
+			
 		}
 
 		rs.close();
 		pstmt.close();
 		conn.close();
+		
+		/* pStart가 true 라면 이제부터 페널티를 받기 시작한 사람. */
+		if(pStart){
 %>
-		<script>
-			alert("취되었습니다.(현재 패널티 : "+<%=penalty%>+" 점)");
-			location.href="test02.jsp";
-		</script>
-<% 			
+			<script>
+				alert("취소되었습니다.(현재 패널티 : "+<%=penalty%>+" 점)");
+				location.href="test02.jsp";
+			</script>    
+<% 				
+		}
+		else{
+%>
+			<script>
+				alert("취소되었습니다.현재 패널티 : "+<%=penalty%>+" 점으로"+<%=pDate%>+" 까지 예약하실 수 없습니다.");
+				location.href="test02.jsp";
+			</script>    
+<% 				
+		}
+		
 	}
 	catch(SQLException e){
 		System.out.println(e);
