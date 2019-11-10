@@ -9,8 +9,8 @@
 
 <script type="text/javascript">
 	function chk() {
-		var r = confirm("취소 하시겠습니까?");
-		
+		//var r = confirm("취소 하시겠습니까?");
+		var r = true;
 		return r;
 	}
 </script>

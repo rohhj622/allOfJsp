@@ -115,16 +115,17 @@
 		pstmt = conn.prepareStatement(sql4);
 		
 		pstmt.executeUpdate(sql4);
+
+		rs.close();
+		pstmt.close();
+		conn.close();
+		
 %>
 		<script>
 			alert("예약되었습니다.");
 			location.href="test01.jsp";
 		</script>
 <% 
-		rs.close();
-		pstmt.close();
-		conn.close();
-		
 	
 	}catch(SQLException e){
 		

@@ -9,8 +9,10 @@
 
     //오늘 일. 아래에서 오늘 일보다 작으면 a태그 안걸 것.
   	int nowD = cal.get(Calendar.DATE);
-  	System.out.println(nowD);
-    
+  	int nowM = cal.get(Calendar.MONTH);
+	int nowY = cal.get(Calendar.YEAR);
+	int nowD2 = cal.get(Calendar.DATE)+14;
+	
     // 시작요일 확인
     // - Calendar MONTH는 0-11까지임
     cal.set(year, month, 1);
@@ -98,16 +100,25 @@
 	    // - 날짜를 하루씩 이동하여 월이 바뀔때까지 그린다
 	    while (cal.get(Calendar.MONTH) == month) {
 	    	int i = 0;
-	//오늘 이전 날짜들. a태그 안걸거임.
-	    	if(cal.get(Calendar.DATE) < nowD){
+	    	//오늘 이전 날짜들. a태그 안걸거임.
+	    	if( cal.get(Calendar.MONTH)< nowM && cal.get(Calendar.YEAR)<= nowY){
 	    		//System.out.println(cal.get(Calendar.DATE));
 	%>
-	    	<td class="tb2-td" style="cursor:default;" > 
-	    		<%= cal.get(Calendar.DATE) %>    
-	    	</td>	
+		    	<td class="tb2-td" style="cursor:default;" > 
+		    		<%= cal.get(Calendar.DATE) %>    
+		    	</td>	
 	<% 
+	    	} 
+	    	else if( cal.get(Calendar.MONTH) == nowM && cal.get(Calendar.YEAR) == nowY && cal.get(Calendar.DATE) < nowD )
+	    	{ //이번달인데,지난 날짜들.	    	
+	%>			
+			    <td class="tb2-td" style="cursor:default;" > 
+	    		<%= cal.get(Calendar.DATE) %>    
+	    		</td>
+	<%	
 	    	}
-	    	else{ // 오늘 이후 날짜들.	    	
+	    	else if( nowD <= cal.get(Calendar.DATE) && cal.get(Calendar.DATE) < nowD2 && cal.get(Calendar.MONTH) == nowM && cal.get(Calendar.YEAR) == nowY) 
+	    	{ //이번달인데 다음날둘.. 2주간만 가능잼. 
 	%>		
 			    <td class="tb2-td" style="cursor:pointer;" > 
 			    	<a href="test01.jsp?y=<%=year %>&m=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>" >
@@ -121,7 +132,22 @@
 			    
 			    </td>
 			        <!-- out.println("<td>" + cal.get(Calendar.DATE) + "</td>"); -->
-	<%	
+	<%	    		
+	    	}
+	    	else if(cal.get(Calendar.MONTH) > nowM && cal.get(Calendar.YEAR) >= nowY ){
+	%>			
+			    <td class="tb2-td" style="cursor:default;" > 
+	    		<%= cal.get(Calendar.DATE) %>    
+	    		</td>
+	<%   		
+	    	}
+	    	else{
+	    		
+	%>			
+			    <td class="tb2-td" style="cursor:default;" > 
+	    		<%= cal.get(Calendar.DATE) %>    
+	    		</td>
+	<%   		
 	    	}
 	        // 토요일인 경우 다음줄로 생성
 	        if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY){ 	
