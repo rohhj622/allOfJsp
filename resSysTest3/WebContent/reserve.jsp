@@ -21,16 +21,17 @@
 <body>
 <%!
 	int weekday; //0~4 평일, 5~6 주말
-	String isWeek;
-	String instrument;
-	String mem_id;
-	String year;
-	String month;
-	String day;
+	String isWeek; //오늘이  평일임 주말임?
+	Boolean isPast = false; // 과거인가?
+	String instrument; //사람악기 
+	String mem_id;// 그사람 아이디 
+	String year;//선택한 년 
+	String month;// 선택한 월 
+	String day;//선택한 
 %>
 <%
 	/* 
-		0. 지난 날짜인지 확인하기. & 지난 시간대인 확인하기 
+		0. 지난 날짜인지 확인하기.
 		1. 선택한 날짜가 주말인지 평일인지 알아내기.  sql
 		2. 그 사람의 악기가 무엇인지 알아내기.  sql2
 		3. 그 악기와 날짜에 맞춰서 연습실 보여주기. sql3
@@ -77,16 +78,17 @@
 	
 	Date nowD = sf.parse(sf.format(now)); //지금 날짜 
 	Date selD = sf.parse(date); // 선택한 날짜 
+
+	//System.out.println(nowD+"//"+selD);
 	
-	long subR = selD.getTime() - nowD.getTime();
 	
-	if(subR < 0){
-%>
-		<script>
-			alert("이미 지나간 날짜는 예약이 불가합니다.");
-			location.href="test01.jsp";	
-		</script>
-<% 	
+	int subR = selD.compareTo(nowD);
+	//System.out.println("과연 같은가? "+subR);
+	
+	if(subR == 0){
+		isPast = true; //true 면 오늘 날짜로, 지나간 시간의 연습실은 안보여줄거임.  false면 ㄱㅊ.
+	}else if(subR > 0 || subR < 0){
+		isPast = false;
 	}
 	
 	try{
@@ -134,13 +136,21 @@
 			//System.out.println("i am here");
 			sql3="SELECT * FROM SkyMusic.academy where acd_no like '%_d%' and acd_name = '"+instrument
 					+"' and acd_no not in (select  acd_no from SkyMusic.reservation where res_date='"+date
-					+"' and res_state='using' group by acd_no having count(*) =2) order by acd_startTime";
+					+"' and res_state='using' group by acd_no having count(*) =2) ";
 		}
 		else{
 			
 			sql3 = "SELECT * FROM SkyMusic.academy where acd_no like '%_w%' and acd_name = '"+instrument
 					+"' and acd_no not in (select  acd_no from SkyMusic.reservation where res_date='"+date
-					+"' and res_state='using' group by acd_no having count(*) =2) order by acd_startTime";
+					+"' and res_state='using' group by acd_no having count(*) =2) ";
+		}
+		
+		if(isPast){ //오늘 시간이면 지난것을 연습실 안보여줄거임.
+			/* today */
+			//System.out.println("나 여기." + isPast);
+			//sql3 += "and time(acd_startTime) > ('20:00:00') order by acd_startTime";
+			
+			sql3 += "and time(acd_startTime) > date_format(now(),'%H:00:00') order by acd_startTime";
 		}
 		
 		pstmt = conn.prepareStatement(sql3);

@@ -1884,3 +1884,70 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY org.eclipse.e4.ui.workbench 4 0 2019-11-10 22:19:34.080
 !MESSAGE Unable to retrieve the bundle from the URI: bundleclass://com.genuitec.eclipse.meexplorer/com.genuitec.eclipse.meexplorer.breadcrumb.e4.BreadCrumbContainer
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:30:53.798
+!MESSAGE Could not publish server configuration for Tomcat v9.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:30:53.798
+!MESSAGE Multiple Contexts have a path of "/resSysTest2".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:31:11.729
+!MESSAGE Could not publish server configuration for Tomcat v9.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:31:11.729
+!MESSAGE Multiple Contexts have a path of "/resSysTest2".
+!SESSION 2019-11-10 22:31:21.330 -----------------------------------------------
+eclipse.buildId=4.12.0.I20190605-1800
+java.version=1.8.0_231
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/hyunjin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/hyunjin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2019-11-10 22:31:33.295
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.egit.core 1 0 2019-11-10 22:31:33.309
+!MESSAGE Using Apache MINA sshd as ssh client.
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2019-11-10 22:31:34.256
+!MESSAGE Unable to retrieve the bundle from the URI: bundleclass://com.genuitec.eclipse.meexplorer/com.genuitec.eclipse.meexplorer.breadcrumb.e4.BreadCrumbContainer
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:31:41.672
+!MESSAGE Could not publish server configuration for Tomcat v9.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:31:41.672
+!MESSAGE Multiple Contexts have a path of "/resSysTest2".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:32:13.385
+!MESSAGE Could not publish server configuration for Tomcat v9.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:32:13.385
+!MESSAGE Multiple Contexts have a path of "/resSysTest2".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:33:17.321
+!MESSAGE Could not publish server configuration for Tomcat v9.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:33:17.321
+!MESSAGE Multiple Contexts have a path of "/resSysTest2".
+!SESSION 2019-11-10 22:33:21.682 -----------------------------------------------
+eclipse.buildId=4.12.0.I20190605-1800
+java.version=1.8.0_231
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/hyunjin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/hyunjin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2019-11-10 22:33:25.290
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.egit.core 1 0 2019-11-10 22:33:25.307
+!MESSAGE Using Apache MINA sshd as ssh client.
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2019-11-10 22:33:26.233
+!MESSAGE Unable to retrieve the bundle from the URI: bundleclass://com.genuitec.eclipse.meexplorer/com.genuitec.eclipse.meexplorer.breadcrumb.e4.BreadCrumbContainer
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:33:38.349
+!MESSAGE Could not publish server configuration for Tomcat v9.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:33:38.349
+!MESSAGE Multiple Contexts have a path of "/resSysTest2".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:34:25.261
+!MESSAGE Could not publish server configuration for Tomcat v9.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2019-11-10 22:34:25.261
+!MESSAGE Multiple Contexts have a path of "/resSysTest2".
