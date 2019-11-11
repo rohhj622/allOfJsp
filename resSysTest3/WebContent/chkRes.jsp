@@ -1,6 +1,6 @@
-<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.Calendar"%>
 <%@ page import="java.sql.*" %>  
 <%@ page import="java.util.Date" %>  
 <%@ page import ="java.text.SimpleDateFormat" %>
@@ -63,7 +63,9 @@
 	String pDate = sf.format(cal.getTime()); //혹시나 페널티받을 차례라면 이때 까지 예약못하게 할 날짜 
     
     cal.add(Calendar.DATE, -7); //다시 되돌리기.
+    Date mem_pDate  = sf.parse(pDate);
     
+    java.sql.Date sqlDate = new java.sql.Date(mem_pDate.getTime() );
 
 	
 	/* 
@@ -127,24 +129,34 @@
 		
 		/* 당일 취소로, 페널티 점수 1점 추가. */		
 		if(true == okP){
-			String sql2 = "update SkyMusic.member set mem_penalty = mem_penalty+1 where mem_id='"+mem_id+"'";
+			String sql2 = "update SkyMusic.member set mem_penalty = mem_penalty+1 where mem_id= '"+mem_id+"' ";
 			pstmt = conn.prepareStatement(sql2);			
 			pstmt.executeUpdate(sql2);	
 			
 			/* 업뎃 된 페널티 가져오기  */
-			String sql3 = "select mem_penalty from SkyMusic.member where mem_id='"+mem_id+"'";
+			String sql3 = "select mem_penalty from SkyMusic.member where mem_id= '"+mem_id+"' ";
 			pstmt = conn.prepareStatement(sql3);	
 			rs = pstmt.executeQuery(sql3);	
-
 			if(rs.next()){
 				penalty = rs.getInt(1);
 			}
+			System.out.println("업뎃 . "+penalty);
 			
 			if( penalty == 5 ){
 				/* 업뎃된 페널티가 5점이면, 현재날짜 +7 한 date를 mem_pDate에 넣기. mem_accP에 페널티값 넣고, 현재 페널티는 0으로 변경. */
-				String sql4 = "update SkyMusic.member set mem_accP = mem_accP+ 5, mem_pDate='"+pDate+"', mem_penalty=0, where mem_id='"+mem_id+"'";	
 				
+				System.out.println("들으어옴. "+penalty);
+				 
+				String sql4 = "update SkyMusic.member set mem_pDate = '"+pDate+"' where mem_id= '"+ mem_id +"' ";				
 				pstmt = conn.prepareStatement(sql4);			
+				pstmt.executeUpdate(sql4);	
+				
+				sql4 = "update SkyMusic.member set mem_accP = mem_accP + 5 where mem_id= '"+ mem_id +"' ";				
+				pstmt = conn.prepareStatement(sql4);				
+				pstmt.executeUpdate(sql4);			
+
+				sql4 = "update SkyMusic.member set mem_penalty = 0 where mem_id= '"+ mem_id +"' ";				
+				pstmt = conn.prepareStatement(sql4);	
 				pstmt.executeUpdate(sql4);	
 				
 				pStart = true;
@@ -158,7 +170,8 @@
 		conn.close();
 		
 		/* pStart가 true 라면 이제부터 페널티를 받기 시작한 사람. */
-		if(pStart){
+		System.out.println("과염 " +pStart);
+		if(pStart == false){
 %>
 			<script>
 				alert("취소되었습니다.(현재 패널티 : "+<%=penalty%>+" 점)");
@@ -169,7 +182,7 @@
 		else{
 %>
 			<script>
-				alert("취소되었습니다.현재 패널티 : "+<%=penalty%>+" 점으로"+<%=pDate%>+" 까지 예약하실 수 없습니다.");
+				alert("취소되었습니다.\n 현재 패널티 : "+<%=penalty%>+"점 으로"+<%=pDate%>+" 까지 예약하실 수 없습니다.");
 				location.href="test02.jsp";
 			</script>    
 <% 				
@@ -177,7 +190,7 @@
 		
 	}
 	catch(SQLException e){
-		System.out.println(e);
+		System.out.println("chkRes:"+e);
 	}
 	
 	

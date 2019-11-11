@@ -27,7 +27,8 @@
 	request.setCharacterEncoding("utf8"); 
 	
 	/*  
-		1. 페널티가 == 5 인가?
+		0. mem_pDate가 오늘 날짜랑 같은가? 그러면 mem_pDate지워서 페널티 기간 지워주
+		1. 페널티가 있는가?
 		2. 하루 2회 예약을 다 하였는가?
 		3. 이미 예약한 시간인가?
 		4. 예약할건데, 이미 하나정도는 예약이 되어있나? 있으면 그냥 ,없으면 추가하고  ㄱ 
@@ -49,19 +50,20 @@
 
 		
 		/* 1 */
-		String sql = "select mem_penalty from SkyMusic.member where mem_id = '"+mem_id+"'";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		ResultSet rs = pstmt.executeQuery(sql);	
-		int penalty=0;
+		/* mem_pDate에 값이 있는가? 있으면 페널티 걸려있는 것. */
+		String sql1 = "SELECT mem_pDate FROM SkyMusic.member where mem_pDate is not null and mem_id = '"+mem_id+"'";
+		PreparedStatement pstmt = conn.prepareStatement(sql1);
+		ResultSet rs = pstmt.executeQuery(sql1);	
+		String pDate = null;
 		
 		if(rs.next()){
-			penalty = rs.getInt(1);
+			pDate = rs.getString(1);
 		}	
-		System.out.println(penalty);
-		if(penalty == 5){
+		System.out.println(pDate);
+		if(pDate != null){
 %>
 			<script>
-				alert("페널티 5회로 예약 불가합니다.");
+				alert("페널티 5회입니다.\n"+<%=pDate%>+" 까지 예약이 불가합니다.");
 				location.href="test01.jsp";
 			</script>
 <% 
