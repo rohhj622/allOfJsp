@@ -27,7 +27,7 @@
 			</form>	
 		</td>
 		<td>
-			<form action="user03.jsp" method="post">
+			<form action="board.jsp" method="post">
 				<input id="ipM" type="submit" value="공지사항" >
 			</form>	
 		</td>

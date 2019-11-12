@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SkyMusic - Board</title>
+<title>SkyMusic - Create</title>
 </head>
+<body>
 	<table border ="1">
 		<tr >		
 		<%
@@ -29,7 +30,7 @@
 		</tr>
 		<tr>
 			<td>
-				<jsp:include page="read.jsp"/>
+				<jsp:include page="create.jsp"/>
 			</td>
 		</tr>
 	</table>
