@@ -76,6 +76,9 @@
 	}else if(mem_id.equals("rohwk129")){
 		session.setAttribute("mem_id", mem_id);
 		response.sendRedirect("user01.jsp");
+	}else if(mem_id.equals("doyoung")){
+		session.setAttribute("mem_id", mem_id);
+		response.sendRedirect("user01.jsp");
 	}else{
 		session.setAttribute("mem_id", mem_id);
 		response.sendRedirect("admin01.jsp");

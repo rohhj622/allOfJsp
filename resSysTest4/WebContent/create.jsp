@@ -11,15 +11,14 @@
 	<h1>create</h1>
 	<%
 		String noUpdate = request.getParameter("number"); //details에서 수정 누른 사람들. 
-		System.out.println("noUpdate: "+noUpdate);
+		System.out.println("created: "+noUpdate);
 	%>
-	<form action="./boardTask.jsp">
 		
 			<%
 			Boolean iAm = false; /* false -> 글쓰기 // true -> 수정 */
 			String str = "수정";
 			
-			/* 새로운 글 작성  */
+			/* 수정 */
 			if(noUpdate !=null ){
 				iAm = true;
 				/* DB 연결  */
@@ -48,18 +47,22 @@
 					
 					if(title != null && content != null){
 						%>
-						<table>
-							<tr>
-								<td>
-									제목 : <input type="text" name="title" value="<%=title %>">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									내용 : <textarea rows="10" cols="50" name="content" ><%=content %></textarea>
-								</td>
-							</tr>
-						</table>
+						<form action="boardTask.jsp">
+							<table>
+								<tr>
+									<td>
+										제목 : <input type="text" name="title" value="<%=title %>">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										내용 : <textarea rows="10" cols="50" name="content" ><%=content %></textarea>
+									</td>
+								</tr>
+							</table>
+							<input type="hidden" name="noUpdate" value="<%=noUpdate %>">
+							<input type="submit" value="수정">
+						</form>
 						<% 		
 					}
 				}catch(SQLException e){
@@ -67,34 +70,30 @@
 				}
 				
 			}
-				
-			
-			/* 수정  */
+			/* 새로 작성 */
 			else{
 				%>
-				<table>
-					<tr>
-						<td>
-								제목 : <input type="text" name="title" >
-						</td>
-					</tr>
-					<tr>
-						<td>
-								내용 : <textarea rows="10" cols="50" name="content"></textarea>
-						</td>
-					</tr>
-					</table>
+				<form action="boardTask.jsp">
+							<table>
+								<tr>
+									<td>
+										제목 : <input type="text" name="title" >
+									</td>
+								</tr>
+								<tr>
+									<td>
+										내용 : <textarea rows="10" cols="50" name="content" ></textarea>
+									</td>
+								</tr>
+							</table>
+							<input type="hidden" name="noUpdate" value="<%=noUpdate %>">
+							<input type="submit" value="글쓰기">
+				</form>
 				<% 		
 				}
-			
-			if(iAm!=true){
-				str = "글쓰기";
-			}
-			
+
 			%>
-		<input type="hidden" value="<%=noUpdate %>">
-		<input type="submit" value="<%=str%>">
-	</form>
+
 		
 </body>
 </html>

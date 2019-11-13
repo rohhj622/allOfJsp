@@ -34,6 +34,10 @@
 					<input type="hidden" name="number" value="<%=no %>">
 					<input type="submit" value="수정"><br>
 				</form>
+				<form action="deleteBoard.jsp">
+							<input type="hidden" name="noUpdate" value="<%=no %>">
+							<input type="submit" value="삭제">
+				</form>
  		
  		<% 
  			}

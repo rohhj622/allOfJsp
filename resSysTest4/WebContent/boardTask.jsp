@@ -34,21 +34,11 @@
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 			
-		System.out.println(no);
+		System.out.println("boardTask:" + no);
 		
 		/* 새로운 글 작성 한다면  */
 		if(no == null || no.length()==0){		
 			try{
-			/* 	String sql = "select max(no) from SkyMusic.board ";
-				pstmt = conn.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				
-				String maxNo = null;
-				
-				if(rs.next()){
-					maxNo = rs.getString(1);
-				}
-				 */
 				String sql1 = "insert into SkyMusic.board(subject,content,created) values('"+title+"','"+content+"',date(now()))";
 				pstmt = conn.prepareStatement(sql1);
 				pstmt.executeUpdate(sql1);
