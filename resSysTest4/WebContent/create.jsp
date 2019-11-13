@@ -15,12 +15,11 @@
 	%>
 		
 			<%
-			Boolean iAm = false; /* false -> 글쓰기 // true -> 수정 */
 			String str = "수정";
 			
 			/* 수정 */
 			if(noUpdate !=null ){
-				iAm = true;
+				
 				/* DB 연결  */
 				Class.forName("com.mysql.cj.jdbc.Driver");	
 				String url = "jdbc:mysql://localhost/SkyMusic?characterEncoding=UTF-8 & serverTimezone=UTC";
@@ -86,8 +85,8 @@
 									</td>
 								</tr>
 							</table>
-							<input type="hidden" name="noUpdate" value="<%=noUpdate %>">
-							<input type="submit" value="글쓰기">
+					<input type="hidden" name="noUpdate" value="nothing">
+					<input type="submit" value="글쓰기">
 				</form>
 				<% 		
 				}

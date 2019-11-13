@@ -10,18 +10,10 @@
 <body>
 	<h1>HiCreate</h1>
 	<%
-		String no = request.getParameter("noUpdate");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		
-		if(title ==null || content == null){
-	%>
-			<script type="text/javascript">
-				alert("빈칸이 없어야합니다.");
-				location.href="board.jsp";
-			</script>
-	<% 
-		}
+		String no = request.getParameter("noUpdate"); //앞에서 받아온 글 번호 
+		String title = request.getParameter("title"); // 앞에서 받은 제목
+		String content = request.getParameter("content"); // 앞에서 받은 내용 
+		 
 		
 		/* DB */
 		Class.forName("com.mysql.cj.jdbc.Driver");	
@@ -34,10 +26,12 @@
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 			
-		System.out.println("boardTask:" + no);
+		System.out.println("boardTask: " + no);
 		
 		/* 새로운 글 작성 한다면  */
-		if(no == null || no.length()==0){		
+		if(no.equals("nothing")){
+			
+			//System.out.println("fefefe");
 			try{
 				String sql1 = "insert into SkyMusic.board(subject,content,created) values('"+title+"','"+content+"',date(now()))";
 				pstmt = conn.prepareStatement(sql1);
@@ -49,6 +43,10 @@
 				
 			}catch(SQLException e){
 				System.out.println("BoardTask1 : " + e);
+			}finally {
+		        if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+		        if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+		        if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 			}
 		%>
 			<script type="text/javascript">
@@ -76,6 +74,10 @@
 				
 			}catch(SQLException e){
 				System.out.println("BoardTask : " + e);
+			}finally {
+			        if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			        if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			        if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 			}
 		%>
 			<script type="text/javascript">

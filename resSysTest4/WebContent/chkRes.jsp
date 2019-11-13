@@ -63,9 +63,8 @@
 	String pDate = sf.format(cal.getTime()); //혹시나 페널티받을 차례라면 이때 까지 예약못하게 할 날짜 
     
     cal.add(Calendar.DATE, -7); //다시 되돌리기.
-    Date mem_pDate  = sf.parse(pDate);
-    
-    java.sql.Date sqlDate = new java.sql.Date(mem_pDate.getTime() );
+    Date mem_pDate  = sf.parse(pDate);/* 페널티 받을 날짜 만들기 date로. */
+  
 
 	
 	/* 
@@ -144,6 +143,7 @@
 			
 			if( penalty == 5 ){
 				/* 업뎃된 페널티가 5점이면, 현재날짜 +7 한 date를 mem_pDate에 넣기. mem_accP에 페널티값 넣고, 현재 페널티는 0으로 변경. */
+				/* mem_pDate : 예약을 할수있게되는 날. mem_accP:그 사람의 누적 페널티. mem_penalty : 페널티 저장.  */
 				
 				System.out.println("들으어옴. "+penalty);
 				 

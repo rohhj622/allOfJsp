@@ -33,7 +33,7 @@
 			ResultSet rs = null;
 			
 			try{
-				if(mem_id.equals("admin")){
+				if(mem_id.equals("admin")){/* 아이디 admin? 그럼 버튼 보여줘라. */
 			 		%>
 			 				<form action="bCreate.jsp">		
 								<input type="submit" value="글쓰기"><br>
@@ -42,7 +42,7 @@
 			 		<% 
 			 			}
 				
-				String sql = "Select * from SkyMusic.board order by no desc";
+				String sql = "Select * from SkyMusic.board order by no desc"; 
 				pstmt  = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				

@@ -81,6 +81,11 @@
 		}catch(SQLException e){
 			System.out.println("detail: " +e);
 		}
+ 		finally {
+	        if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	        if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	        if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	    }
 		 
 		
 	%>

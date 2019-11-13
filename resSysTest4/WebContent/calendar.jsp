@@ -9,9 +9,9 @@
     int month = request.getParameter("m") == null ? cal.get(Calendar.MONTH) : (Integer.parseInt(request.getParameter("m")) - 1);
 
     //오늘 일. 아래에서 오늘 일보다 작으면 a태그 안걸 것.
-	int nowD = cal.get(Calendar.DATE);
-	int nowM = cal.get(Calendar.MONTH);
-	int nowY = cal.get(Calendar.YEAR);
+	int nowD = cal.get(Calendar.DATE); /* 오늘 날짜중 '일'  */
+	int nowM = cal.get(Calendar.MONTH);/*  오늘 날짜 중 '월' */
+	int nowY = cal.get(Calendar.YEAR);/* 오늘 날짜 중 '년' */
 	
 	int nowD2 = cal.get(Calendar.DATE)+14; //현재날짜 14일 후 
 
@@ -106,55 +106,29 @@
 	    	
 	    	int i = 0;
 	   	
-	    	//오늘 이전 날짜들. a태그 안걸거임.
-	    	if( cal.get(Calendar.MONTH)< nowM && cal.get(Calendar.YEAR)<= nowY){
-	    		//System.out.println(cal.get(Calendar.DATE));
-	%>
-		    	<td class="tb2-td" style="cursor:default;" > 
+	    	 if( nowD <= cal.get(Calendar.DATE) && cal.get(Calendar.DATE) < nowD2 && cal.get(Calendar.MONTH) == nowM && cal.get(Calendar.YEAR) == nowY) 
+		    	{ //이번달인데 오늘 +14일인 날들.. 2주간만 가능잼. 
+		%>		
+				    <td class="tb2-td" style="cursor:pointer;" > 
+				    	<a href="user01.jsp?y=<%=year %>&m=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>" >
+				    		
+				    		<%= cal.get(Calendar.DATE) %> 
+				    	</a>
+				    		
+				    	<%-- <span style="cursor:pointer" class="chkDate">
+					    	<%= cal.get(Calendar.DATE) %> 	
+				    	</span> --%>
+				    
+				    </td>
+				        <!-- out.println("<td>" + cal.get(Calendar.DATE) + "</td>"); -->
+		<%	    		
+		    	}else{		
+		    		%>			
+				    <td class="tb2-td" style="cursor:default;" > 
 		    		<%= cal.get(Calendar.DATE) %>    
-		    	</td>	
-	<% 
-	    	} 
-	    	else if( cal.get(Calendar.MONTH) == nowM && cal.get(Calendar.YEAR) == nowY && cal.get(Calendar.DATE) < nowD )
-	    	{ //이번달인데,지난 날짜들.	    	
-	%>			
-			    <td class="tb2-td" style="cursor:default;" > 
-	    		<%= cal.get(Calendar.DATE) %>    
-	    		</td>
-	<%	
-	    	}
-	    	else if( nowD <= cal.get(Calendar.DATE) && cal.get(Calendar.DATE) < nowD2 && cal.get(Calendar.MONTH) == nowM && cal.get(Calendar.YEAR) == nowY) 
-	    	{ //이번달인데 다음날둘.. 2주간만 가능잼. 
-	%>		
-			    <td class="tb2-td" style="cursor:pointer;" > 
-			    	<a href="user01.jsp?y=<%=year %>&m=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>" >
-			    		
-			    		<%= cal.get(Calendar.DATE) %> 
-			    	</a>
-			    		
-			    	<%-- <span style="cursor:pointer" class="chkDate">
-				    	<%= cal.get(Calendar.DATE) %> 	
-			    	</span> --%>
-			    
-			    </td>
-			        <!-- out.println("<td>" + cal.get(Calendar.DATE) + "</td>"); -->
-	<%	    		
-	    	}
-	    	else if(cal.get(Calendar.MONTH) > nowM && cal.get(Calendar.YEAR) >= nowY ){
-	%>			
-			    <td class="tb2-td" style="cursor:default;" > 
-	    		<%= cal.get(Calendar.DATE) %>    
-	    		</td>
-	<%   		
-	    	}
-	    	else{
-	    		
-	%>			
-			    <td class="tb2-td" style="cursor:default;" > 
-	    		<%= cal.get(Calendar.DATE) %>    
-	    		</td>
-	<%   		
-	    	}
+		    		</td>
+		<%   		
+		    	}
 	    	
 	    	
 	        // 토요일인 경우 다음줄로 생성

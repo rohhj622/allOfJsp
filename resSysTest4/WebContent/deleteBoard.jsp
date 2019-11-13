@@ -31,23 +31,13 @@
 				String sql1 = "select * from SkyMusic.board";
 				pstmt = conn.prepareStatement(sql1);
 				rs = pstmt.executeQuery(sql1);
-				
-				/* int i =1 ; //index 수정 할려고 만든
-				
-				while(rs.next()){
-					String bNo = rs.getString("no"); //db table에 있는 번호 가져오기. 
-					
-					String sql2= "update SkyMusic.board set no='"+i+"' where no='"+bNo+"' ";
-					pstmt = conn.prepareStatement(sql2);
-					pstmt.executeUpa(sql2);
-					
-				} */
-				
+
 				if(rs!=null){
 					rs.close();
 					pstmt.close();
 					conn.close();
 				}
+				
 				
 			%>
 				<script type="text/javascript">

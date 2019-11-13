@@ -151,6 +151,8 @@
 			//sql3 += "and time(acd_startTime) > ('20:00:00') order by acd_startTime";
 			
 			sql3 += "and time(acd_startTime) > date_format(now(),'%H:00:00') order by acd_startTime";
+		}else{
+			sql3 += "order by acd_startTime";
 		}
 		
 		pstmt = conn.prepareStatement(sql3);
