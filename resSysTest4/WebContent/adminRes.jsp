@@ -67,7 +67,8 @@
 		}
 		else{
 			do{
-				String text = rs.getString("mem_name")+"-"+rs.getString("mem_instrument")+"//"+rs.getString("acd_startTime") +"~" +rs.getString("acd_endTime");
+				String text = rs.getString("mem_name")+"-"+rs.getString("mem_instrument")+" // "+rs.getString("acd_startTime") ;
+				/* +"~" +rs.getString("acd_endTime") */
 %>
 				<p><%=text %></p>
 				

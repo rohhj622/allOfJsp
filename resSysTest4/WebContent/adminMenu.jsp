@@ -16,16 +16,14 @@
 
 <table>
 	<tr>
-	
-	<!-- chart  할 공간. -->
-<!-- 		<td>
-			<form action="user01.jsp" method="post">
-				<input id="ipM" type="submit" value="예약">
-			</form>
-		</td> -->
 		<td>
 			<form action="admin01.jsp" method="post">
 				<input id="ipM" type="submit" value="내역" >
+			</form>	
+		</td>
+		<td>
+			<form action="admin02.jsp" method="post">
+				<input id="ipM" type="submit" value="예약통계" >
 			</form>	
 		</td>
 		<td>
