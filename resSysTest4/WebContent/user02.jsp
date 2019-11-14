@@ -4,10 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+	.tb:{
+		width: 20cm;
+		height: 40cm;
+	}
+</style>
 <title>SkyMusic - Reservation</title>
 </head>
 <body>
-	<table border ="1">
+	<table border ="1" class="tb">
 	<tr >
 		<td colspan="2">
 			<jsp:include page="menu.jsp"/>

@@ -58,20 +58,6 @@
 	
 </style>
 
- <script type="text/javascript">
-	var bDisplay = true;
-	function doDisplay(){
-	    var con = document.getElementById("myDiv");
-
-	    if(con.style.display=='block'){
-	    }else{
-	        con.style.display = 'block';
-	    }
-	}
-
-</script>
-
-
 </head>
 <body>
 <%-- <jsp:include page="menu.jsp"/> --%>
@@ -81,9 +67,9 @@
 	<table class="tb1" border="1" >
 	<tr>
 	    <td>
-		    <a href="./user02.jsp?y=<%=prevYear%>&m=<%=prevMonth%>">◁</a> 
+		    <a href="./admin01.jsp?y=<%=prevYear%>&m=<%=prevMonth%>">◁</a> 
 		    <%=year%>년 <%=month+1%>월 
-		    <a href="./user02.jsp?y=<%=nextYear%>&m=<%=nextMonth%>">▷</a>
+		    <a href="./admin01.jsp?y=<%=nextYear%>&m=<%=nextMonth%>">▷</a>
 	    </td>
 	</tr>
 	<tr>
@@ -134,7 +120,7 @@
 	    	{ //이번달인데 다음날둘.. 2주간만 가능잼. 
 	%>		
 			    <td class="tb2-td" style="cursor:pointer;" > 
-			    	<a href="user02.jsp?y=<%=year %>&m=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>" >
+			    	<a href="admin01.jsp?y=<%=year %>&m=<%=month+1%>&day=<%= cal.get(Calendar.DATE) %>" >
 			    		
 			    		<%= cal.get(Calendar.DATE) %> 
 			    	</a>

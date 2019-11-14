@@ -5,9 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>SkyMusic - Reserve</title>
+
+<style>
+	.tb:{
+		width: 20cm;
+		height: 40cm;
+	}
+</style>
 </head>
 <body>
-<table border ="1">
+<table border ="1" class="tb">
 	<tr >
 		<td colspan="2">
 			<jsp:include page="menu.jsp"/>

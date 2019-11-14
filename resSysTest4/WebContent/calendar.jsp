@@ -47,20 +47,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SkyMusic - Calendar</title>
-
-<script type="text/javascript">
-	var bDisplay = true;
-	function doDisplay(){
-	    var con = document.getElementById("myDiv");
-
-	    if(con.style.display=='block'){
-	    }else{
-	        con.style.display = 'block';
-	    }
+ <style type="text/css">
+	/* .tb1{
+		margin-left:auto;
+    	margin-right:auto;
+		text-align: center;
+		
 	}
-
-</script>
+	.tb2{
+		text-align: center;
+	}
+	.tb2 td{
+		width:64px;
+		height:70px;
+		color: gray;
+	}
+	
+	.tb2 td:active{
+		background-color: #cce0ff;
+	} */
+	a { text-decoration: none; }
+	a:link { color: Blue; }
+	a:visited { color: blue; }
+	a:hover { color: black; }
+	a:active { color: red; }
+	.tb2-td{
+		/* background-color: #cce0ff; */
+		color: gray; 
+	}
+	
+</style> 
+<title>SkyMusic - Calendar</title>
 
 
 </head>
@@ -115,17 +132,12 @@
 				    		<%= cal.get(Calendar.DATE) %> 
 				    	</a>
 				    		
-				    	<%-- <span style="cursor:pointer" class="chkDate">
-					    	<%= cal.get(Calendar.DATE) %> 	
-				    	</span> --%>
-				    
 				    </td>
-				        <!-- out.println("<td>" + cal.get(Calendar.DATE) + "</td>"); -->
 		<%	    		
 		    	}else{		
 		    		%>			
 				    <td class="tb2-td" style="cursor:default;" > 
-		    		<%= cal.get(Calendar.DATE) %>    
+		    			<%= cal.get(Calendar.DATE) %>   
 		    		</td>
 		<%   		
 		    	}

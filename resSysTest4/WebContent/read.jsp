@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>SkyMusic - Read</title>
+<style type="text/css">
+	a { text-decoration: none; }
+	a:link { color: black; }
+	a:visited { color:black; }
+	a:hover { color: gray; }
+	a:active { color: red; }
+</style>
 </head>
 <body>
 	<table>
@@ -75,6 +82,11 @@
 			}catch(SQLException e){
 				System.out.println("read: " + e);
 			}
+			finally {
+		        if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+		        if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+		        if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		    }
 		%>
 	
 	</table>

@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+	
+</style>
 <title>SkyMusic - Board</title>
 </head>
-	<table border ="1">
+	<table border ="1" class="tb">
 		<tr >		
 		<%
 			String mem_id = session.getAttribute("mem_id").toString();
