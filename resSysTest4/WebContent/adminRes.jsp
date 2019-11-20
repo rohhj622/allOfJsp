@@ -44,6 +44,7 @@
 %>
 	<!-- 날짜 보이기  -->
 	<p><%=date %></p>
+	드럼
 <% 
 	request.setCharacterEncoding("utf8"); 
 	
@@ -53,10 +54,12 @@
 	String pass = "shguswls12";
 	
 	try{
-		/* 1 */
+		/* 1 Drum */
 		Connection conn = DriverManager.getConnection(url,id,pass);
 		//String sql = "select * from SkyMusic.academy where acd_no in(select acd_no from SkyMusic.reservation where res_date = '"+date+"' order by acd_startTime);";
-		String  sql = "SELECT mem_name,acd_startTime,acd_endTime,mem_instrument FROM SkyMusic.reservation natural join SkyMusic.member natural join SkyMusic.academy where res_date ='"+date+"'";
+		String  sql = "SELECT mem_name,acd_startTime,acd_endTime,mem_instrument"+
+						" FROM SkyMusic.reservation natural join SkyMusic.member natural join SkyMusic.academy "+
+						"where res_date ='"+date+"' and SkyMusic.reservation.acd_no like 'D%' order by acd_startTime,mem_name";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -68,12 +71,40 @@
 		}
 		else{
 			do{
-				String text = rs.getString("mem_name")+"-"+rs.getString("mem_instrument")+" // "+rs.getString("acd_startTime") ;
-				/* +"~" +rs.getString("acd_endTime") */
+				String text = rs.getString("acd_startTime")+" // "+rs.getString("mem_name") ;
+				
+				/* 내역 찍어주기  */
 %>
 				<p><%=text %></p>
 				
 <% 
+			}while(rs.next());
+		}
+		out.println("<hr>");
+		out.println("기타");
+		
+		/* 2.guitar */
+		String sql2 = "SELECT mem_name,acd_startTime,acd_endTime,mem_instrument"+
+				" FROM SkyMusic.reservation natural join SkyMusic.member natural join SkyMusic.academy "+
+						"where res_date ='"+date+"' and SkyMusic.reservation.acd_no like 'G%' order by acd_startTime,mem_name";
+		pstmt = conn.prepareStatement(sql2);
+		rs = pstmt.executeQuery(sql2);
+		
+		/* 예약 내역이 없이비어있다면  */
+		if(rs.next()==false){
+		%>
+			<p>예약내역이 없습니다.</p>
+		<% 
+		}
+		else{
+			do{
+				String text = rs.getString("acd_startTime")+" // "+rs.getString("mem_name") ;
+				
+				/* 내역 찍어주기  */
+		%>
+				<p><%=text %></p>
+				
+		<% 
 			}while(rs.next());
 		}
 		

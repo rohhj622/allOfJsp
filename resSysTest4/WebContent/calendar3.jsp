@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
     Calendar cal = Calendar.getInstance();
@@ -57,18 +58,40 @@
 	
 	
 </style>
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
 </head>
 <body>
-<%	String mem_id = session.getAttribute("mem_id").toString(); %>
-	내역
+<%	String mem_id = session.getAttribute("mem_id").toString(); 
+	String instrument = null;
+%>
+	<script type="text/javascript">
+		function selInst(ths){
+			var val1 = $("#selBox option:selected").val(); //선택된 악기이름 가져옴.
+		
+			if(val1=="drum"){
+				<% instrument="drum";%>
+				console.log("<%=instrument%>");
+			}
+			if(val1=="guitar"){
+				<% instrument="guitar";%>
+				console.log("<%=instrument%>");
+			}	
+		}; 
+	</script>
 	
+	내역
+	<!--  -->
+	<%-- <select id="selBox" onchange="selInst()" >
+		<option >악기 선택</option>
+		<option value="drum" <c:if test="${instrument eq 'drum'}"> selected</c:if>>드럼</option>
+		<option value="guitar" <c:if test="${instrument eq 'guitar'}"> selected</c:if>>기타</option>
+	</select> --%>
 	<!-- Calendar -->
 	<table class="tb1" border="1" >
 	<tr>
 	    <td>
 		    <a href="./admin01.jsp?y=<%=prevYear%>&m=<%=prevMonth%>">◁</a> 
-		    <%=year%>년 <%=month+1%>월 
+		    <%=year%>년 <%=month+1 %>월 
 		    <a href="./admin01.jsp?y=<%=nextYear%>&m=<%=nextMonth%>">▷</a>
 	    </td>
 	</tr>
@@ -125,12 +148,7 @@
 			    		<%= cal.get(Calendar.DATE) %> 
 			    	</a>
 			    		
-			    	<%-- <span style="cursor:pointer" class="chkDate">
-				    	<%= cal.get(Calendar.DATE) %> 	
-			    	</span> --%>
-			    
 			    </td>
-			        <!-- out.println("<td>" + cal.get(Calendar.DATE) + "</td>"); -->
 	<%	    		
 	    	}
 	    	else if(cal.get(Calendar.MONTH) > nowM && cal.get(Calendar.YEAR) >= nowY ){

@@ -16,7 +16,7 @@
 		<tr>
 			<td>
 				<button onclick="location.href='dayChart.jsp'">일별차트</button>
-				<button onclick="location.href='timeChart.jsp'">시간대차트</button>
+				<button onclick="location.href='timeChart.jsp'">시간별차트</button>
 				<br>
 				<button onclick="location.href='drumChart.jsp'">드럼</button>
 				<button onclick="location.href='guitarChart.jsp'">기타</button>

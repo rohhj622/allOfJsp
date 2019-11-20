@@ -9,9 +9,11 @@
   </head>
   <body>
   <%
-  	int a=0;int b=0;int c=0;int d=0;int e=0;int f=0;int g=0;int h=0;int i=0; int j=0;int k=0;int l=0;int m = 0; 
+  	int a=0;int b=0;int c=0;int d=0;int e=0;int f=0;int g=0;
+  	int h=0;int i=0; int j=0;int k=0;int l=0;int m = 0; 
 	//주말 시간 
-	int n=0; int o=0;int p=0;int q=0; //평일 시작 시간 (18,19,20,21)
+	int n=0; int o=0;int p=0;int q=0; 
+	//평일 시작 시간 (18,19,20,21)
   	Class.forName("com.mysql.cj.jdbc.Driver");	
 	String url = "jdbc:mysql://localhost/SkyMusic?characterEncoding=UTF-8 & serverTimezone=UTC";
 	String id = "HJ";
@@ -20,7 +22,7 @@
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs  = null;
-	//Map<String, String> result = new HashMap<String, String>();
+	
 	conn = DriverManager.getConnection(url,id,pass);
 	
 	try{
