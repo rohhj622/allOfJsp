@@ -8,7 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>SkyMusic - Chart</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 <body>
 
@@ -49,44 +50,40 @@
 			Date date = sf.parse(str); // 선택한 날짜 
 			String day = sf2.format(date);
 			
-			/* System.out.println(day);
-			System.out.println(date); */
+			System.out.println(day);
+			System.out.println(date); 
+			
 			switch(day){
-				case "Mon":
+				case "월":
 					System.out.println(day);
 					mon++;
 					break;
-				case "Tue":
+				case "화":
 					System.out.println(day);
 					tue++;
 					break;
-				case "Wed":
+				case "수":
 					System.out.println(day);
 					wed++;
 					break;
-				case "Thu":
+				case "목":
 					System.out.println(day);
 					thu++;
 					break;
-				case "Fri":
+				case "금":
 					System.out.println(day);
 					fri++;
 					break;
-				case "Sat":
+				case "토":
 					System.out.println(day);
 					sat++;
 					break;
-				case "Sun":
+				case "일":
 					System.out.println(day);
 					sun++;
 					break;
 			}
 		}
-		
-		/* 최다 예약 시간 */
-		
-		
-		
 		
 	}catch(SQLException e){
 		System.out.println(e);
@@ -97,59 +94,43 @@
     }
 	
 	
-	
 %>
 
+
 <!-- 요일별 예약  -->
-<canvas id="myChart" width="300" height="250"></canvas>
-<script>
-var ctx = document.getElementById('myChart');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-        datasets: [{
-            label: '일별 예약',
-            data: [<%=mon%>,<%=tue%>,<%=wed%>,<%=thu%>,<%=fri%>,<%=sat%>,<%=sun%>],
-            backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(153, 0, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(153, 0, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-    	responsive: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-					stepSize : 1,
-                }
-            }]
-        }
-    }
-});
-</script>
+<script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["요일", "횟수", { role: "style" } ],
+        ["월요일", <%=mon%>, "#ff6666"],
+        ["화요일",  <%=tue%>, "#ff944d"],
+        ["수요일",  <%=wed%>, "#ffff4d"],
+        ["목요일",  <%=thu%>, "#4dff4d"],
+        ["금요일",  <%=fri%>, "#99c2ff"],
+        ["토요일",  <%=sat%>, "#4d4dff"],
+        ["일요일",  <%=sun%>, "#a64dff"]
+      ]);
 
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
 
-
-
-
+      var options = {
+        title: "요일별 차트",
+        bar: {groupWidth: "80%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+<div id="columnchart_values" style="width: 500px; height: 300px;"></div>
 
 </body>
 </html>

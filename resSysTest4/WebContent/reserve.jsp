@@ -136,7 +136,7 @@
 			//System.out.println("i am here");
 			sql3="SELECT * FROM SkyMusic.academy where acd_no like '%_d%' and acd_name = '"+instrument
 					+"' and acd_no not in (select  acd_no from SkyMusic.reservation where res_date='"+date
-					+"' and res_state='using' group by acd_no having count(*) =2) ";
+					+"' and res_state='using' group by acd_no having count(*) =2)";
 		}
 		else{
 			

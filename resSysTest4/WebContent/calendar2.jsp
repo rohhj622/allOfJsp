@@ -76,7 +76,7 @@
 <body>
 <%-- <jsp:include page="menu.jsp"/> --%>
 <% String mem_id = session.getAttribute("mem_id").toString(); %>
-	
+	내역
 	<!-- Calendar -->
 	<table class="tb1" border="1" >
 	<tr>

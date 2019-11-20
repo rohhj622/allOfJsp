@@ -9,7 +9,6 @@
 
 </head>
 <body>
-
 <%
 	int weekday; //0~4 평일, 5~6 주말
 	String isWeek;
@@ -23,6 +22,8 @@
 	String mem_id = session.getAttribute("mem_id").toString();
 	String year = request.getParameter("y");
 	String  month = request.getParameter("m");
+	String inst = request.getParameter("instrument");
+	System.out.println(inst);
 	
 	if(month!=null && Integer.parseInt(month)<10){
 		month = "0" +month;
