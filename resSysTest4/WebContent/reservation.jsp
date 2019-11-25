@@ -41,10 +41,10 @@
 		month = "0" +month;
 	}
 	
-	System.out.println(month);
+	
 	
 	String day = request.getParameter("day");
-	
+	System.out.println("resAdmin"+month+"/"+day);
 	if(day ==null){
 		return;
 	}else if(day!=null && Integer.parseInt(day)<10){

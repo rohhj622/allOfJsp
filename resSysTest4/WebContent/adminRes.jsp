@@ -33,7 +33,7 @@
 	
 	String day = request.getParameter("day");
 	
-	if(day ==null){
+	if(day == null){
 		return;
 	}else if(day!=null && Integer.parseInt(day)<10){
 		day = "0" +day;

@@ -124,11 +124,21 @@
 		
 		pstmt = conn.prepareStatement(sql2);
 		rs = pstmt.executeQuery(sql2);
+		int acdCnt=0; // 연습실 개수
 		
 		if(rs.next()){
 			instrument = rs.getString(1);		
 		}
-		System.out.println(instrument);
+		
+		switch (instrument){
+		case "drum":
+			acdCnt = 2;
+			break;
+		case "guitar":
+			acdCnt = 2;
+			break;
+		}
+		System.out.println(instrument+":"+acdCnt);
 		
 		/* 3 */
 		String sql3;
@@ -136,13 +146,13 @@
 			//System.out.println("i am here");
 			sql3="SELECT * FROM SkyMusic.academy where acd_no like '%_d%' and acd_name = '"+instrument
 					+"' and acd_no not in (select  acd_no from SkyMusic.reservation where res_date='"+date
-					+"' and res_state='using' group by acd_no having count(*) =2)";
+					+"' and res_state='using' group by acd_no having count(*) ="+acdCnt+")";
 		}
 		else{
 			
 			sql3 = "SELECT * FROM SkyMusic.academy where acd_no like '%_w%' and acd_name = '"+instrument
 					+"' and acd_no not in (select  acd_no from SkyMusic.reservation where res_date='"+date
-					+"' and res_state='using' group by acd_no having count(*) =2) ";
+					+"' and res_state='using' group by acd_no having count(*) = "+acdCnt+") ";
 		}
 		
 		if(isPast){ //오늘 시간이면 지난것을 연습실 안보여줄거임.

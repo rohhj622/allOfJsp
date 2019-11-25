@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Calcelling...</title>
+<title>Cancelling...</title>
 </head>
 <body>
 <%!

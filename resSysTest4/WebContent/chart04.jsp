@@ -9,9 +9,9 @@
   </head>
   <body>
   <%
-  	int a=0;int b=0;int c=0;int d=0;int e=0;int f=0;int g=0;int h=0;int i=0; int j=0;int k=0;int l=0;int m = 0; 
-  	//주말 시간 
-  	int n=0; int o=0;int p=0;int q=0; //평일 시작 시간 (18,19,20,21)
+ 
+  	int day[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
   
   	Class.forName("com.mysql.cj.jdbc.Driver");	
 	String url = "jdbc:mysql://localhost/SkyMusic?characterEncoding=UTF-8 & serverTimezone=UTC";
@@ -37,15 +37,15 @@
 			System.out.println(str);
 			
 			if(str.equals("18")){
-				n = rs.getInt("count(*)");
+				day[13] = rs.getInt("count(*)");
 			}else if(str.equals("19")){
-				o = rs.getInt("count(*)");
+				day[14] = rs.getInt("count(*)");
 			}
 			else if(str.equals("20")){
-				p = rs.getInt("count(*)");
+				day[15] = rs.getInt("count(*)");
 			}
 			else if(str.equals("21")){
-				q = rs.getInt("count(*)");
+				day[16] = rs.getInt("count(*)");
 			}
 		}
 		
@@ -61,42 +61,42 @@
 			System.out.println(str);
 			
 			if(str.equals("9")){
-				a = rs.getInt("count(*)");
+				day[0] = rs.getInt("count(*)");
 			}else if(str.equals("10")){
-				b = rs.getInt("count(*)");
+				day[1] = rs.getInt("count(*)");
 			}
 			else if(str.equals("11")){
-				c = rs.getInt("count(*)");
+				day[2] = rs.getInt("count(*)");
 			}
 			else if(str.equals("12")){
-				d = rs.getInt("count(*)");
+				day[3] = rs.getInt("count(*)");
 			}
 			else if(str.equals("13")){
-				e = rs.getInt("count(*)");
+				day[4] = rs.getInt("count(*)");
 			}
 			else if(str.equals("14")){
-				f = rs.getInt("count(*)");
+				day[5] = rs.getInt("count(*)");
 			}
 			else if(str.equals("15")){
-				g = rs.getInt("count(*)");
+				day[6] = rs.getInt("count(*)");
 			}
 			else if(str.equals("16")){
-				h = rs.getInt("count(*)");
+				day[7] = rs.getInt("count(*)");
 			}
 			else if(str.equals("17")){
-				i = rs.getInt("count(*)");
+				day[8] = rs.getInt("count(*)");
 			}
 			else if(str.equals("18")){
-				j = rs.getInt("count(*)");
+				day[9] = rs.getInt("count(*)");
 			}
 			else if(str.equals("19")){
-				k = rs.getInt("count(*)");
+				day[10] = rs.getInt("count(*)");
 			}
 			else if(str.equals("20")){
-				l = rs.getInt("count(*)");
+				day[11] = rs.getInt("count(*)");
 			}
 			else if(str.equals("21")){
-				m = rs.getInt("count(*)");
+				day[12] = rs.getInt("count(*)");
 			}
 			
 		}
@@ -118,19 +118,19 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Time', '평일', '주말'],
-          ['9',  <%=a%>,      0],
-          ['10',  <%=b%>,     0],
-          ['11',  <%=c%>,     0],
-          ['12',  <%=d%>,     0],
-          ['13',  <%=e%>,     0],
-          ['14',  <%=f%>,     0],
-          ['15',  <%=g%>,     0],
-          ['16',  <%=h%>,     0],
-          ['17',  <%=i%>,     0],
-          ['18',  <%=j%>,     <%=n%>],
-          ['19',  <%=k%>,     <%=o%>],
-          ['20',  <%=l%>,     <%=p%>],
-          ['21',  <%=m%>,     <%=q%>],
+          ['9',  <%=day[0]%>,      0],
+          ['10',  <%=day[1]%>,     0],
+          ['11',  <%=day[2]%>,     0],
+          ['12',  <%=day[3]%>,     0],
+          ['13',  <%=day[4]%>,     0],
+          ['14',  <%=day[5]%>,     0],
+          ['15',  <%=day[6]%>,     0],
+          ['16',  <%=day[7]%>,     0],
+          ['17',  <%=day[8]%>,     0],
+          ['18',  <%=day[9]%>,     <%=day[13]%>],
+          ['19',  <%=day[10]%>,     <%=day[14]%>],
+          ['20',  <%=day[11]%>,     <%=day[15]%>],
+          ['21',  <%=day[12]%>,     <%=day[16]%>],
           ['22',  0,    0]
           
         ]);

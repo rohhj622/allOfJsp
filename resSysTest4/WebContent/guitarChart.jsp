@@ -21,7 +21,7 @@
 				<button onclick="location.href='drumChart.jsp'">드럼</button>
 				<button onclick="location.href='guitarChart.jsp'">기타</button>
 				<jsp:include page="chart04.jsp"></jsp:include>
-			</td>
+			</td>  
 		</tr>
 	</table>
 </body>
