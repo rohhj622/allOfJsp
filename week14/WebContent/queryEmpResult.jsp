@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="week11.Emp"%>
+<%@page import="Model.Emp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -30,7 +30,7 @@
 		
 		<c:forEach var="emp" items="${list }">
 			<tr>
-				<td>${emp.getEmpNo() }</td>
+				<td>${emp.getEmpno() }</td>
 				<td>${emp.getEmpName() }</td>
 				<td>${emp.getEmpDept() }</td>
 				<td>${emp.getEmpJob() }</td>
@@ -39,7 +39,7 @@
 		</c:forEach>
 	</table>
 <br><br>
-<form action="menu.jsp">
+<form action="main.do">
 	<input type="submit" value="메뉴화면">
 </form>
 </body>

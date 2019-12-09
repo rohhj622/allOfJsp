@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Menu.jsp</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h3> ⭐️ 메뉴 선택 ⭐️</h3>
-	<button onclick="location.href='queryEmp.jsp'">사원목록</button>
-	
+	<script type="text/javascript">
+	 	location.herf="queryEmpProc.do";
+	</script>
 </body>
 </html>
