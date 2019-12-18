@@ -24,10 +24,13 @@
 	
 	String title = mr.getParameter("title");
 	String writer = mr.getParameter("writer");
-	String filename = mr.getParameter("file");
+	//String filename = mr.getParameter("file");
+	String filename = mr.getOriginalFileName("file");
 	String original = mr.getFilesystemName("file"); 
 	File file = new File(real+"/"+filename);
 	int size = (int)file.length();
+	
+	String str = real+"/"+original;
 	
 	
 	
@@ -38,9 +41,10 @@
 	파일명:<%=filename %>
 	원본명:<%=original %>
 	파일크기:<%=size %>
-	<%=real %>
+	<%=str %>
 	
 	
-	<img src="<%=real+'/'+filename %>" >
+	<img src="<%=str %>" >
+	<img src="/Users/hyunjin/Documents/JSP-eclipse/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/week13/fileSave/1491822075747.jpeg">;
 </body>
 </html>

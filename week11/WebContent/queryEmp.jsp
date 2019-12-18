@@ -16,8 +16,8 @@
 			Statement stmt = null;
 			ResultSet rs = null;
 			
-			String jdbcDriver = "jdbc:mysql://localhost:3306/CjspDB?"+
-					"useSSL=false&serverTimezone=UTC";
+			String jdbcDriver ="jdbc:mysql://localhost/CjspDB?characterEncoding=UTF-8 & serverTimezone=UTC & usessl=false";
+					//"jdbc:mysql://localhost:3306/CjspDB?serverTimezone=UTC";
 			
 			String id = "root";
 			String pw = "shguswls12";

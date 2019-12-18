@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="diaryNs">
+	<resultMap type="diary" id="diaryResult">
+		<result property="no" column="no" />
+		<result property="cdate" column="cdate" />
+		<result property="content" column="content" />
+	</resultMap>
+	
+	<select id="list" resultMap="diaryResult">
+		select * from diary
+	</select>
+
+<!-- 	<insert id="insert" parameterType="string">
+		insert into diary values(#{no},#{cdate},#{content})
+	</insert> -->
+	
+	
+</mapper>

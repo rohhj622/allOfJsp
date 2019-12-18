@@ -26,12 +26,13 @@
 		/* font-family: 'Noto Serif KR', serif; */
 		
 	}
+	
 </style>
 </head>
 <body>
 <div class="col-lg-10 col-md-offset-1">
 	<div class="btn-group ">
-		<button onclick="location.href='market.do'" class="btn btn-default" id="btn">크리스마스 상점</button>
+		<button onclick="location.href='main.jsp'" class="btn btn-default" id="btn">365 Christmas</button> 
 		<button onclick="location.href='movie.do'" class="btn btn-default" id="btn">크리스마스 영화</button>
 		<button onclick="location.href='music.do'" class="btn btn-default" id="btn">크리스마스 노래</button>
 		<button onclick="location.href='place.do'" class="btn btn-default" id="btn">크리스마스 장소</button>

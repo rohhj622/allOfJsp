@@ -6,7 +6,7 @@
 	<properties resource="db.properties"/>
 	<typeAliases>
 		<typeAlias alias="emp" type="model.EMP"/>
-<!-- 		<typeAlias alias="dept" type="model.dept"/>
+<!-- 	<typeAlias alias="dept" type="model.dept"/>
 		<typeAlias alias="emp" type="model.EMP"/> -->
 	</typeAliases>
 	<environments default="development">

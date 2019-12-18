@@ -60,7 +60,9 @@
 	
 	//System.out.println("선택 날 : "+date);
 %>
-	<p ><%=date %></p>
+	
+	<p ><%=year %>년 <%=month %>월 <%=day %>일</p>
+	<p>※ 연습 예약가능한 시간만 화면에 표시됩니다.</p>
 <% 
 	request.setCharacterEncoding("utf8"); 
 	

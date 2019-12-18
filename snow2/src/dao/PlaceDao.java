@@ -26,8 +26,9 @@ public class PlaceDao {
 			Reader reader = Resources.getResourceAsReader("/configuration.xml");
 			
 			SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
-			
+			System.out.println("1");
 			session = ssf.openSession(true);
+			System.out.println("2");
 			reader.close();
 		} catch(Exception e) {
 			System.out.println(e);

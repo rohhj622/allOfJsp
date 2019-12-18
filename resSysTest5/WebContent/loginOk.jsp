@@ -46,8 +46,8 @@
 			
 			/* 페널티거두는 날짜와 오늘이 같다면? */
 			int subR = pDate.compareTo(nowD);
-			
-			if(subR==0){
+			//System.out.println(subR);
+			if(subR==0||subR==-1){
 				/* 페널티 걸린 날짜 지워주기  */
 				
 				String sql1 = "update SkyMusic.member set mem_pDate=null where mem_id='"+mem_id+"'";

@@ -5,37 +5,50 @@
 		<item key="DIALOG_Y_ORIGIN" value="340"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="test"/>
+		<item key="selection" value="Diary"/>
 		<item key="wrap" value="true"/>
-		<item key="casesensitive" value="false"/>
+		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="test"/>
-			<item value="where mem_id"/>
-			<item value="test01"/>
-			<item value="test0"/>
-			<item value="date"/>
-			<item value="%"/>
+			<item value="place"/>
+			<item value="Place"/>
+			<item value="map"/>
+			<item value="information"/>
+			<item value="name"/>
+			<item value="과염"/>
+			<item value="Movie"/>
+			<item value="movie"/>
+			<item value="Music"/>
+			<item value="EmpDao"/>
+			<item value="music"/>
 			<item value="system"/>
-			<item value="systme"/>
-			<item value="insert"/>
-			<item value="sf"/>
-			<item value="calendar.jsp"/>
-			<item value="calendar"/>
-			<item value="hi"/>
 			<item value="sys"/>
-			<item value="?"/>
+			<item value="table"/>
+			<item value="col-"/>
 		</list>
 		<list key="replacehistory">
-			<item value="#id02"/>
-			<item value="id02"/>
+			<item value="diary"/>
+			<item value="Diary"/>
+			<item value="created"/>
+			<item value="content"/>
+			<item value="date"/>
+			<item value="Music"/>
+			<item value="music"/>
+			<item value="Place"/>
+			<item value="MovieDao"/>
+			<item value="movie"/>
+			<item value="director"/>
+			<item value="title"/>
+			<item value="place"/>
+			<item value="MusicDao"/>
+			<item value="0"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="896"/>
-		<item key="DIALOG_Y_ORIGIN" value="255"/>
+		<item key="DIALOG_X_ORIGIN" value="998"/>
+		<item key="DIALOG_Y_ORIGIN" value="117"/>
 		<item key="DIALOG_WIDTH" value="294"/>
 		<item key="DIALOG_HEIGHT" value="408"/>
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>

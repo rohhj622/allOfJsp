@@ -53,12 +53,15 @@
 			
 			if(content.isEmpty()==false){ //content가 빈게 아니라면
 				%>
-				<table>
+				<table style="border:1px solid gray;">
 					<!-- 제목 & 작성 -->
-					<tr>
+					<tr style="text-align:center;" >
 						<td>
 							 <%=title %>
 						</td>
+						
+					</tr>
+					<tr style="text-align:right; ">
 						<td>
 							<%=created %>
 						</td>

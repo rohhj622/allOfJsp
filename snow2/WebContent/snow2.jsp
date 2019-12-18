@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
 <!-- 부트스트랩 JS  -->
 <script src="js/bootstrap.js"></script>
 
-<title>캔버스 눈 내리는 효과 script</title>  
+<title>365CHRISTMAS</title>  
 </head>
 
 <style type="text/css">
@@ -46,7 +47,11 @@ canvas {
 }
 a{
 	text-align: center;
+	text-decoration: none;
 }
+a:link { color: white; text-decoration: none;}
+a:visited { color: white; text-decoration: none;}
+a:hover { color: white; text-decoration: none;}
 p{
 	text-align:center;
 	font-family: 'Indie Flower', cursive, fantasy;
@@ -147,7 +152,7 @@ window.onload = function(){
 </script>
 <body>
 	<div style="position:relative;"  >
-		<p>️️Merry Christmas️️</p>
+		<p><a href="main.jsp">️️Merry Christmas️️</a></p>
 		<center>
 			<a style="color: white;" href="write.jsp">
 				이번년도 크리스마스에 있었던 일 작성하러가기 -->

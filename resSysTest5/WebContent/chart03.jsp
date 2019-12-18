@@ -117,7 +117,7 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Time', '평일', '주말'],
+          ['Time', '주말', '평일'],
           ['9',  <%=day[0]%>,      0],
           ['10',  <%=day[1]%>,     0],
           ['11',  <%=day[2]%>,     0],

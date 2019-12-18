@@ -33,7 +33,7 @@
 	
 	try{
 		conn = DriverManager.getConnection(url,id,pass);
-		
+		System.out.println("2");
 		/* 요일별 예약  */
 		String sql = "select res_date from SkyMusic.reservation group by res_date order by count(*)";
 		// 날짜별로 나온 횟수 select 
@@ -42,42 +42,43 @@
 		
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat sf2 = new SimpleDateFormat("E"); //요일만 나오게 해줌. 
-	
+		System.out.println("3");
 		while(rs.next()){
 			String str = rs.getString("res_date"); /* 결과로 나온 날짜 가져오기 */
 			Date date = sf.parse(str); // 선택한 날짜 
 			String day = sf2.format(date); /* 위에format에 맞춰 가져오기. */
-			/* 
+			System.out.println("4");
+			
 			System.out.println(str);
 			System.out.println(day);
-			System.out.println(date);  */
+			System.out.println(date); 
 			
 			switch(day){
-				case "월":
+				case "Mon":
 					System.out.println(day);
 					mon++;
 					break;
-				case "화":
+				case "Tue":
 					System.out.println(day);
 					tue++;
 					break;
-				case "수":
+				case "Wed":
 					System.out.println(day);
 					wed++;
 					break;
-				case "목":
+				case "Thu":
 					System.out.println(day);
 					thu++;
 					break;
-				case "금":
+				case "Fri":
 					System.out.println(day);
 					fri++;
 					break;
-				case "토":
+				case "Sat":
 					System.out.println(day);
 					sat++;
 					break;
-				case "일":
+				case "Sun":
 					System.out.println(day);
 					sun++;
 					break;

@@ -12,8 +12,7 @@
 	<c:set var="gender" value="female" scope="request"/>
 	<c:set var="age" value="21" scope="request"/> 
 	<c:set var="array" value="<%=new int[] {1,2,3,4,5} %>" scope="request"/>
-	
-	
+
 	
 	<jsp:forward page="jstlResult.jsp"></jsp:forward>
 </body>

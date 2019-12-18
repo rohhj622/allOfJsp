@@ -64,7 +64,8 @@
     
     cal.add(Calendar.DATE, -7); //다시 되돌리기.
     Date mem_pDate  = sf.parse(pDate);/* 페널티 받을 날짜 만들기 date로. */
-  
+  	
+    int i = 0;
 
 	
 	/* 
@@ -85,9 +86,11 @@
 %>
 		<script>
 			alert("이미 지나간 시간입니다.");
-			location.href="user02.jsp";
+			<%i=1;%>
+			//location.href="user02.jsp";
 		</script>
-<% 		
+<% 	
+		return;
 	}
 	
 	boolean okP = false; // true -> penalty-1
@@ -97,24 +100,32 @@
 %>
 		<script>
 			var con = confirm("지금 취소하시면 페널티 1점이 추가됩니다.\n 진행하시겠습니까? (현재 패널티 : "+<%=penalty%>+" 점)");
-			
-			if(con==false){
-				location.href="user02.jsp";				
+			console.log('과연1'+con);
+			if(!con){
+				<%i=1;%>
+				
+			}else if (con){
+				<%i=0;%>
 			}
 		</script>
 		
-<% }
+<% 
+		
+	}
 	else{
 %>	
 		<script>				
-				var con = confirm("취소하시겠습니까?");
-				
-				if(con==false){
-					location.href="user02.jsp";				
+				var con = confirm("취소하시겠습니까?");			
+
+				if(!con){
+					<%i=1;%>
+				}else if (con){
+					<%i=0;%>
 				}
 				
 		</script>
 <%	
+				System.out.println("i값:"+i);
 	}
 	
 	/* 2 */
@@ -122,12 +133,15 @@
 	boolean pStart = false; // 페널티 받기 시작하는지 알려줌. false면 안받아.
 	try{
 		/* 일단 지움. */
-		String sql1 = "delete from SkyMusic.reservation where mem_id = '"+mem_id+"' and res_date='"+date+"' and acd_no='"+acd_no+"'";
-		pstmt = conn.prepareStatement(sql1);	
-		pstmt.executeUpdate(sql1);	
+		if(i==0){
+			String sql1 = "delete from SkyMusic.reservation where mem_id = '"+mem_id+"' and res_date='"+date+"' and acd_no='"+acd_no+"'";
+			pstmt = conn.prepareStatement(sql1);	
+			pstmt.executeUpdate(sql1);	
+		}
+		
 		
 		/* 당일 취소로, 페널티 점수 1점 추가. */		
-		if(true == okP){
+		if(true == okP & i==0){
 			String sql2 = "update SkyMusic.member set mem_penalty = mem_penalty+1 where mem_id= '"+mem_id+"' ";
 			pstmt = conn.prepareStatement(sql2);			
 			pstmt.executeUpdate(sql2);	
@@ -171,21 +185,31 @@
 		
 		/* pStart가 true 라면 이제부터 페널티를 받기 시작한 사람. */
 		System.out.println("과염 " +pStart);
-		if(pStart == false){
+		if(pStart == false & i==0){
 %>
 			<script>
 				alert("취소되었습니다.(현재 패널티 : "+<%=penalty%>+" 점)");
 				location.href="user02.jsp";
 			</script>    
-<% 				
+		
+<% 		
+			return;
 		}
-		else{
+		else if(i==0){
 %>
 			<script>
 				alert("취소되었습니다.\n 현재 패널티 : "+<%=penalty%>+"점 으로"+<%=pDate%>+" 까지 예약하실 수 없습니다.");
 				location.href="user02.jsp";
 			</script>    
-<% 				
+	
+<% 			
+			return;
+		}else{
+		%>
+			<script>
+				location.href="user02.jsp";
+			</script>    
+		<%
 		}
 		
 	}

@@ -17,6 +17,7 @@
 			<td>
 				<button onclick="location.href='dayChart.jsp'">일별차트</button>
 				<button onclick="location.href='timeChart.jsp'">시간대차트</button>
+				<button onclick="location.href='numCan.jsp'">누적페널티순위</button>
 				<jsp:include page="chart01.jsp"/><!-- 요일별 차트 -->
 			</td>
 		</tr>

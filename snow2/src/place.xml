@@ -9,14 +9,15 @@
 		<result property="name" column="name" />
 		<result property="information" column="information" />
 		<result property="map" column="map" />
+		<result property="link" column="link" />
 	</resultMap>
 	
 	<select id="list" resultMap="placeResult">
-		select * from christmasDB.place
+		select * from place
 	</select>
 	
 	<select id="select" parameterType="string" resultType="place">
-		select * from christmasDB.place where no=#{no}
+		select * from place where no=#{no}
 	</select>
 	
 	

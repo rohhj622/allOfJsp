@@ -4,17 +4,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SkyMusic</title>
 <style type="text/css">
 	@import url('https://fonts.googleapis.com/css?family=Mansalva|Ranga|Shadows+Into+Light&display=swap');
     
-    p{
+    #nm{
+    	font-size: 2em;
+        text-align: center;
+        font-family: 'Shadows Into Light', cursive;
+    }
+    
+   #ti{
         color:#000080;
         font-weight: 700;
        
-        font-size: 10em;
+        font-size: 12em;
         text-align: center;
         font-family: 'Shadows Into Light', cursive;
+        margin-bottom: 0px;
+        margin-top:60px;
+        padding-bottom: 0px;
     }
     div{
         margin:auto; 
@@ -71,7 +81,8 @@
 
 
 <body>
-<p>"Sky Music" </p>
+<p id ="ti" >"Sky Music" </p>
+<p id="nm">실용음악학원</p>
 <center>
 	<form action="loginOk.jsp" method="post">
 		id : <input type="text" name="mem_id" id="id01"  ><br>
@@ -79,5 +90,6 @@
 		<input type="submit" value="login" id="id02">
 	</form>
 </center>
+
 </body>
 </html>

@@ -34,7 +34,7 @@
 		conn = DriverManager.getConnection(url,id,pass);
 		
 		/* 요일별 예약  */
-		String sql = "select mem_name,mem_penalty+mem_accP as num from SkyMusic.member where mem_id <>'admin' group by mem_id order by 2 desc ";
+		String sql = "select mem_name,mem_penalty+mem_accP as num from SkyMusic.member where mem_id <>'admin' group by mem_id order by 2 desc limit 5";
 		pstmt = conn.prepareStatement(sql);
 		rs=pstmt.executeQuery(sql);
 

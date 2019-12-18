@@ -60,16 +60,22 @@
 			pDate = rs.getString(1);
 		}	
 		System.out.println(pDate);
+		System.out.println("1");
+		
+		int chk = 0;
+		
 		if(pDate != null){
+			//chk = 1;
 %>
 			<script>
 				alert("페널티 5회입니다.\n"+<%=pDate%>+" 까지 예약이 불가합니다.");
 				location.href="user01.jsp";
 			</script>
 <% 
-			/* response.sendRedirect("test01.jsp"); */
+			return;
 		}
 		
+		System.out.println("2");
 		/* 2 */
 		String sql2 = "select count(*) from SkyMusic.reservation where mem_id='"+mem_id+"' and res_date='"+date+"'";
 		pstmt = conn.prepareStatement(sql2);
@@ -89,6 +95,7 @@
 				location.href="user01.jsp";
 			</script>
 <% 
+			return;
 		}
 		
 		/* 3 */
@@ -108,26 +115,31 @@
 				location.href="user01.jsp";
 			</script>
 <% 
-							
+			return;
 		}
-		
+
 		/* 4 */
 		/* 이미 찬 연습실은 앞에 reserve에서 처리하고 보여준 것. */
-		String sql4 = "insert into SkyMusic.reservation value('"+mem_id+"','"+acd_no+"','"+date+"','using')";
-		pstmt = conn.prepareStatement(sql4);
 		
-		pstmt.executeUpdate(sql4);
+		
+			String sql4 = "insert into SkyMusic.reservation value('"+mem_id+"','"+acd_no+"','"+date+"','using')";
+			pstmt = conn.prepareStatement(sql4);
+			
+			pstmt.executeUpdate(sql4);
 
-		rs.close();
-		pstmt.close();
-		conn.close();
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+	%>
+			<script>
+				alert("예약되었습니다.");
+				location.href="user01.jsp";
+			</script>
+	<% 
+			return;
 		
-%>
-		<script>
-			alert("예약되었습니다.");
-			location.href="user01.jsp";
-		</script>
-<% 
+		
 	
 	}catch(SQLException e){
 		

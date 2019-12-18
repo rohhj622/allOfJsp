@@ -6,7 +6,21 @@ public class Place {
 	private String name;
 	private String information;
 	private String map;
+	private String country;
+	private String link;
 	
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -33,4 +47,5 @@ public class Place {
 	}
 
 	
+
 }

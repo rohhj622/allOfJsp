@@ -13,6 +13,7 @@
 		String no = request.getParameter("noUpdate"); //앞에서 받아온 글 번호 
 		String title = request.getParameter("title"); // 앞에서 받은 제목
 		String content = request.getParameter("content"); // 앞에서 받은 내용 
+		content = content.replace("\r\n", "<br>");
 		 
 		
 		/* DB */

@@ -13,13 +13,13 @@
 	int nowM = cal.get(Calendar.MONTH);/*  오늘 날짜 중 '월' */
 	int nowY = cal.get(Calendar.YEAR);/* 오늘 날짜 중 '년' */
 	
-	cal.add(Calendar.DATE,14);
+	cal.add(Calendar.DATE,14); /* 오늘 날짜에 +14 */
 	
-	int nowD2 = cal.get(Calendar.DATE); /* 오늘 날짜 +14  */
-	int nowM2 = cal.get(Calendar.MONTH);
-	int nowY2 = cal.get(Calendar.YEAR);
+	int nowD2 = cal.get(Calendar.DATE); /* +14일 된 날짜의 일 */
+	int nowM2 = cal.get(Calendar.MONTH);/* +14일 된 날짜의 달 */
+	int nowY2 = cal.get(Calendar.YEAR);/* +14일 된 날짜의 년 */
 	
-	System.out.println(nowY2+"/"+nowM2+"/"+nowD2);
+	//System.out.println(nowY2+"/"+nowM2+"/"+nowD2);
 	
 	cal.add(Calendar.DATE,-14);
 
@@ -55,6 +55,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
  <style type="text/css">
 	/* .tb1{
 		margin-left:auto;
@@ -92,7 +93,7 @@
 <body>
 <%-- <jsp:include page="menu.jsp"/> --%>
 <%  String mem_id = session.getAttribute("mem_id").toString();%>
-	내역
+	예약
 	<!-- Calendar -->
 	<table class="tb1" border="1" >
 	<tr>

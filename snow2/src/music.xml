@@ -12,11 +12,11 @@
 	</resultMap>
 	
 	<select id="list" resultMap="musicResult">
-		select * from christmasDB.music
+		select * from music;
 	</select>
 	
 	<select id="select" parameterType="string" resultType="music">
-		select * from christmasDB.music where no=#{no}
+		select * from music where no=#{no}
 	</select>
 	
 	
