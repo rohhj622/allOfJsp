@@ -72,16 +72,16 @@
 				if(mem_id.equals("admin")){
 					session.setAttribute("mem_id", mem_id);
 					%>
-					<script type="text/javascript">
-						location.href="admin01.jsp";
-					</script>
+						<script type="text/javascript">
+							location.href="../page/admin01.jsp";
+						</script>
 					<%
 				}else{
 					session.setAttribute("mem_id", mem_id);
 					%>
-					<script type="text/javascript">
-						location.href="user01.jsp";
-					</script>
+						<script type="text/javascript">
+							location.href="../page/user01.jsp";
+						</script>
 					<% 		
 				}
 				
@@ -90,7 +90,7 @@
 				%>
 				<script type="text/javascript">
 					alert("아이디 또는 비밀번호가 틀렸습니다.");
-					location.href="login.jsp";
+					location.href="../login.jsp";
 				</script>
 				<% 
 			}
@@ -99,7 +99,7 @@
 			%>
 				<script type="text/javascript">
 					alert("등록되지않은 아이디입니다.");
-					location.href="login.jsp";
+					location.href="../login.jsp";
 				</script>
 			<% 
 		}
