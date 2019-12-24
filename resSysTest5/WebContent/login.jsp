@@ -21,9 +21,7 @@
         text-align: center;
     }
     
-    #id01{
-/*     	//df
-    	  */
+    #id01{ 
         font-size:1rem;
         text-align:left;
         margin-top: 1em;
@@ -75,7 +73,7 @@
 <body>
 <p>"Sky Music" </p>
 <center>
-	<form action="./process/loginOk.jsp" method="post">
+	<form action="loginOk.jsp" method="post">
 		id : <input type="text" name="mem_id" id="id01"  ><br>
 		pw :<input type="password" name="mem_pw" id="id01"><br>
 		<input type="submit" value="login" id="id02">

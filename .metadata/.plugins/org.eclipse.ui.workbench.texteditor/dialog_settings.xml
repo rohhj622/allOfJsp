@@ -5,28 +5,28 @@
 		<item key="DIALOG_Y_ORIGIN" value="340"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Diary"/>
+		<item key="selection" value="과염"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="과염"/>
+			<item value="his"/>
+			<item value="connector"/>
+			<item value="service"/>
 			<item value="place"/>
 			<item value="Place"/>
 			<item value="map"/>
 			<item value="information"/>
 			<item value="name"/>
-			<item value="과염"/>
 			<item value="Movie"/>
 			<item value="movie"/>
 			<item value="Music"/>
 			<item value="EmpDao"/>
 			<item value="music"/>
 			<item value="system"/>
-			<item value="sys"/>
-			<item value="table"/>
-			<item value="col-"/>
 		</list>
 		<list key="replacehistory">
 			<item value="diary"/>
