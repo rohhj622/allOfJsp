@@ -76,7 +76,15 @@
 							location.href="../page/admin01.jsp";
 						</script>
 					<%
-				}else{
+				}else if(mem_id.equals("teacher")){
+					session.setAttribute("mem_id", mem_id);
+					%>
+						<script type="text/javascript">
+							location.href="../page/teacher01.jsp";
+						</script>
+					<%
+				}
+				else{
 					session.setAttribute("mem_id", mem_id);
 					%>
 						<script type="text/javascript">

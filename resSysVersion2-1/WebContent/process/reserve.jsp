@@ -29,6 +29,7 @@
 	String day;//선택한 
 %>
 <%
+	String placeNo="1"; // 건물 번호
 	/* 
 		0. 지난 날짜인지 확인하기.
 		1. 선택한 날짜가 주말인지 평일인지 알아내기.  sql
@@ -111,15 +112,19 @@
 			instrument="guitar&bass";
 		}
 		
+		if(instrument.equals("piano")||instrument.equals("vocal")){
+			instrument="piano&vocal";
+		}
+		
 		System.out.println(instrument);
 		switch (instrument){
 			case "drum":
-				acdCnt = 2;
+				acdCnt=2;
 				break;
 			case "guitar&bass":
-				acdCnt = 1;
+				acdCnt=1;
 				break;
-			case "piano":
+			case "piano&vocal":
 				acdCnt=3;
 				break;
 		}
@@ -154,7 +159,7 @@
 				<input type="hidden" name="date" value="<%=date %>">
 				<input type="hidden" name="instrument" value="<%=instrument %>">
 				<input type="hidden" name="text" value="<%=text %>">
-				
+				<input type="hidden" name="placeNo" value="<%=placeNo %>">
 				<%--  --%>
 				<input type="submit" value="<%=sText %>"><br>
 			</form>

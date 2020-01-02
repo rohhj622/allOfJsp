@@ -29,6 +29,7 @@
 	String day;//선택한 
 %>
 <%
+	String placeNo="2"; // 건물 번호
 	/* 
 		0. 지난 날짜인지 확인하기.
 		1. 선택한 날짜가 주말인지 평일인지 알아내기.  sql
@@ -62,7 +63,7 @@
 	<p><%=year %>년 <%=month %>월 <%=day %>일</p>
 	<p>※ 연습 예약가능한 시간만 화면에 표시됩니다.</p>
 <% 
-	request.setCharacterEncoding("utf8"); 
+	request.setCharacterEncoding("utf8");
 	
 	Class.forName("com.mysql.cj.jdbc.Driver");	
 	String url = "jdbc:mysql://localhost/SkyMusic?characterEncoding=UTF-8 & serverTimezone=UTC";
@@ -106,19 +107,25 @@
 		if(rs.next()){
 			instrument = rs.getString(1);		
 		}
+		
 		if(instrument.equals("bass")||instrument.equals("guitar")){
 			instrument="guitar&bass";
 		}
+		
+		if(instrument.equals("piano")||instrument.equals("vocal")){
+			instrument="piano&vocal";
+		}
+		
 		System.out.println(instrument);
 		switch (instrument){
 			case "drum":
-				acdCnt = 2;
+				acdCnt=3;
 				break;
 			case "guitar&bass":
-				acdCnt = 1;
+				acdCnt=1;
 				break;
-			case "piano":
-				acdCnt=3;
+			case "piano&vocal":
+				acdCnt=4;
 				break;
 		}
 		//System.out.println(instrument+":"+acdCnt);
@@ -151,7 +158,7 @@
 				<input type="hidden" name="date" value="<%=date %>">
 				<input type="hidden" name="instrument" value="<%=instrument %>">
 				<input type="hidden" name="text" value="<%=text %>">
-				
+				<input type="hidden" name="placeNo" value="<%=placeNo %>">
 				<%--  --%>
 				<input type="submit" value="<%=sText %>"><br>
 			</form>

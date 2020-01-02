@@ -47,10 +47,12 @@
 	}
 
 	String date = request.getParameter("date"); //선택한 날짜 
+	System.out.println("chkres2"+date);
 	String acd_no = request.getParameter("acd_no"); // 선택한 날짜 시간에 연습실 번호 
 	String acd_startTime = request.getParameter("acd_startTime"); // 그 시작 시간 
+	
 	//acd_startTime = acd_startTime.substring(0,2);
-	//System.out.println(acd_no);
+	
 	Calendar cal = Calendar.getInstance();
 	Date now = new Date();
 
@@ -81,7 +83,8 @@
 		<script>
 			var con = confirm("지금 취소하시면 페널티 1점이 추가됩니다.\n 진행하시겠습니까? (현재 패널티 : "+<%=penalty%>+" 점)");
 			
-			var date2=<%=date%>;
+			var date2="<%=date%>";
+			Console.log(date2);
 			var acd_no3="<%=acd_no%>";
 			var acd_startTime2="<%=acd_startTime%>";
 			var okP2=<%=okP%>;
@@ -99,7 +102,7 @@
 %>	
 		<script>	
 
-				var date2=<%=date%>;
+				var date2="<%=date%>";
 				var acd_no3="<%=acd_no%>";
 				var acd_startTime2="<%=acd_startTime%>";
 				var okP2=<%=okP%>;

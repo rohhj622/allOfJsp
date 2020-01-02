@@ -46,6 +46,8 @@
 	}
 
 	String date = request.getParameter("date"); //선택한 날짜 
+	System.out.println("chkRes"+date);
+	
 	String acd_no = request.getParameter("acd_no"); // 선택한 날짜 시간에 연습실 번호 
 	String acd_startTime = request.getParameter("acd_startTime"); // 그 시작 시간 
 	

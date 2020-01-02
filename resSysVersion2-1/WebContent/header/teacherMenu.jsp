@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SkyMusic - menu</title>
+<title>SkyMusic-menu</title>
 
 </head>
 <body>
@@ -17,22 +17,17 @@
 <table>
 	<tr>
 		<td>
-			<form action="../page/admin00.jsp" method="post">
-				<input id="ipM" type="submit" value="예약" >
-			</form>	
+			<form action="teacher01.jsp" method="post">
+				<input id="ipM" type="submit" value="예약">
+			</form>
 		</td>
 		<td>
-			<form action="../page/admin01.jsp" method="post">
+			<form action="user02.jsp" method="post">
 				<input id="ipM" type="submit" value="내역" >
 			</form>	
 		</td>
 		<td>
-			<form action="../page/admin02.jsp" method="post">
-				<input id="ipM" type="submit" value="예약통계" >
-			</form>	
-		</td>
-		<td>
-			<form action="../page/board.jsp" method="post">
+			<form action="board.jsp" method="post">
 				<input id="ipM" type="submit" value="공지사항" >
 			</form>	
 		</td>

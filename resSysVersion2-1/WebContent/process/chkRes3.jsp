@@ -15,7 +15,7 @@
 	int penalty =0;
 %>
 <%
-		System.out.println("chk3");
+	System.out.println("chk3");
 	String mem_id = session.getAttribute("mem_id").toString();
 
 	Class.forName("com.mysql.cj.jdbc.Driver");	
@@ -47,6 +47,7 @@
 	}
 
 	String date = request.getParameter("date"); //선택한 날짜 
+	System.out.println(date);
 	String acd_no = request.getParameter("acd_no"); // 선택한 날짜 시간에 연습실 번호 
 	String acd_startTime = request.getParameter("acd_startTime"); // 그 시작 시간 
 	String okP = request.getParameter("okP");//페널티 받는지 안받는지
@@ -149,7 +150,7 @@
 		
 	}
 	catch(SQLException e){
-		System.out.println("chkRes:"+e);
+		System.out.println("chkRe3:"+e);
 	}
 	
 	

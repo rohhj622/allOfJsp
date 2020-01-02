@@ -18,7 +18,7 @@
 	String date = request.getParameter("date");
 	String instrument = request.getParameter("instrument");
 	String acd_no = request.getParameter("text"); 
-	//String acd_startTime = request.getParameter("acd_starTime");
+	String placeNo=request.getParameter("placeNo");
 	
 	System.out.println("taskRes var = "+mem_id+","+date+","+instrument+","+acd_no);
 	
@@ -119,9 +119,9 @@
 
 		/* 4 */
 		/* 이미 찬 연습실은 앞에 reserve에서 처리하고 보여준 것. */
+			System.out.println(placeNo);
 		
-		
-			String sql4 = "insert into SkyMusic.reservation value('"+mem_id+"','"+acd_no+"','"+date+"','using')";
+			String sql4 = "insert into SkyMusic.reservation value('"+mem_id+"','"+acd_no+"','"+date+"','using','"+placeNo+"')";
 			pstmt = conn.prepareStatement(sql4);
 			
 			pstmt.executeUpdate(sql4);

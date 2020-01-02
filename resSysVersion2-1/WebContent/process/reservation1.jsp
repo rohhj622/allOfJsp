@@ -49,7 +49,7 @@
 		day = "0" +day;
 	}
 	
-	String date = year+ month+ day;
+	String date = year+"-"+ month+"-"+ day;
 	System.out.println("선택 날 : "+date);
 %>
 	<!-- 날짜 보이기  -->

@@ -35,6 +35,7 @@
 	String mem_id = session.getAttribute("mem_id").toString();
 	String year = request.getParameter("y");
 	String  month = request.getParameter("m");
+	String day = request.getParameter("day");
 	
 	if(month!=null && Integer.parseInt(month)<10){
 		month = "0" +month;
@@ -42,7 +43,6 @@
 	
 	System.out.println(month);
 	
-	String day = request.getParameter("day");
 	
 	if(day ==null){
 		return;
@@ -50,7 +50,7 @@
 		day = "0" +day;
 	}
 	
-	String date = year+ month+ day;
+	String date = year+"-"+ month+"-"+ day;
 	System.out.println("선택 날 : "+date);
 %>
 	<!-- 날짜 보이기  -->
