@@ -29,12 +29,12 @@
 %>
 <%
 	//String placeNo="1"; // 건물 번호
-	/* 
-		0. 지난 날짜인지 확인하기.
-		1. 선택한 날짜가 주말인지 평일인지 알아내기.  sql
-		2. 그 사람의 악기가 무엇인지 알아내기.  sql2
-		3. 그 악기와 날짜에 맞춰서 연습실 보여주기. sql3
-	*/
+	request.setCharacterEncoding("utf8"); 
+	
+	Class.forName("com.mysql.cj.jdbc.Driver");	
+	String url = "jdbc:mysql://localhost/SkyMusic?characterEncoding=UTF-8 & serverTimezone=UTC";
+	String id = "HJ";
+	String pass = "shguswls12";
 	
 	mem_id = session.getAttribute("mem_id").toString();
 	year = request.getParameter("y");
@@ -43,8 +43,6 @@
 	if(month!=null && Integer.parseInt(month)<10){
 		month = "0" +month;
 	}
-	
-	//System.out.println(month);
 	
 	day = request.getParameter("day");
 	
@@ -55,6 +53,36 @@
 	}
 	
 	String date = year+"-"+ month+"-"+day;
+	
+	
+	/* 악기구분 */
+	try{
+		/* 1 */
+		Connection conn = DriverManager.getConnection(url,id,pass);
+		
+		/* 2 */
+		String sql2 = "select mem_instrument from SkyMusic.member where mem_id='"+mem_id+"'";
+		//System.out.println(mem_id);
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql2);
+		ResultSet rs = pstmt.executeQuery(sql2);
+		int acdCnt=0; // 연습실 개수
+		
+		if(rs.next()){
+			instrument = rs.getString(1);		
+		}
+		
+		if(instrument.equals("bass")||instrument.equals("guitar")){
+			instrument="guitar&bass";
+		}
+		
+		if(instrument.equals("piano")||instrument.equals("vocal")){
+			instrument="piano&vocal";
+		}
+	}catch(SQLException e){
+		System.out.println("adminResAll:"+e);
+	}
+	
 
 %>
 	<p ><%=year %>년 <%=month %>월 <%=day %>일</p>
@@ -65,9 +93,28 @@
 			<option value="2">2호점</option>
 		</select>
 		<select name="instrumentT">
-			<option value="Drum">드럼</option>
-			<option value="Guitar&Bass">기타/베이스</option>
-			<option value="Piano&Vocal">피아노/보컬</option>
+		<%
+			if(instrument.equals("drum")){
+				%>
+					<option value="Drum">드럼</option>
+				<% 	
+			}else if(instrument.equals("guitar&bass")){
+				%>
+					<option value="Guitar&Bass">기타/베이스</option>
+				<% 	
+			}else if(instrument.equals("piano&vocal")){
+				%>
+					<option value="Piano&Vocal">피아노/보컬</option>
+				<% 
+			}else{
+				%>
+					<option value="Drum">드럼</option>
+					<option value="Guitar&Bass">기타/베이스</option>
+					<option value="Piano&Vocal">피아노/보컬</option>
+				<% 
+			}
+		%>
+			
 		</select>
 		<select name="startT">
 			<option value="9">9시</option>
@@ -101,6 +148,7 @@
 			<option value="22">22시</option>
 		</select>
 		<input type="hidden" name="date" value="<%=date %>">
+	
 		<input type="submit" value="예약하기">
 	</form>
 </body>

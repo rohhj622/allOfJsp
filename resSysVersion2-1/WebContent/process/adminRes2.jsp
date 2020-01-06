@@ -82,16 +82,17 @@
 			do{
 				String acd_no = rs.getString("acd_no");
 				String acd_startTime =rs.getString("acd_startTime"); 
+				String mem_id2 = rs.getString("mem_id");
 				//System.out.println(rs.getString("mem_id"));
 
 				String text = rs.getString("mem_name")+" | "+rs.getString("acd_startTime") +"~" +rs.getString("acd_endTime");
 %>
 				<%-- <p><%=sText %></p> --%>
-				<form action="../process/chkRes.jsp" onSubmit="return chk()">
+				<form action="../process/adminChkRes.jsp" onSubmit="return chk()">
 					<input type="hidden" name="date" value="<%=date %>">
 					<input type="hidden" name="acd_no" value="<%=acd_no %>">
 					<input type="hidden" name="acd_startTime" value="<%=acd_startTime %>">
-					<input type="hidden" name="mem_id" value="<%=rs.getString("mem_id")%>">
+					<input type="hidden" name="mem_id2" value="<%=mem_id2%>">
 					
 					<input type="submit" value="<%=text%>"><br>
 				</form>
@@ -121,15 +122,16 @@
 				String acd_no = rs.getString("acd_no");
 				String acd_startTime =rs.getString("acd_startTime"); 
 				System.out.println(acd_startTime);
+				String mem_id2 = rs.getString("mem_id");
 
 				String text = rs.getString("mem_name")+" | "+rs.getString("acd_startTime") +"~" +rs.getString("acd_endTime");
 %>
 				<%-- <p><%=sText %></p> --%>
-				<form action="../process/chkRes.jsp" onSubmit="return chk()">
+				<form action="../process/adminChkRes.jsp" onSubmit="return chk()">
 					<input type="hidden" name="date" value="<%=date %>">
 					<input type="hidden" name="acd_no" value="<%=acd_no %>">
 					<input type="hidden" name="acd_startTime" value="<%=acd_startTime %>">
-					<input type="hidden" name="mem_id" value="<%=rs.getString("mem_id")%>">
+					<input type="hidden" name="mem_id2" value="<%=mem_id2%>">
 					
 					<input type="submit" value="<%=text%>"><br>
 				</form>
@@ -158,16 +160,18 @@
 			do{
 				String acd_no = rs.getString("acd_no");
 				String acd_startTime =rs.getString("acd_startTime"); 
-				System.out.println(acd_startTime);
+				String mem_id2 = rs.getString("mem_id");
 
+				System.out.println(acd_startTime);
+				
 				String text = rs.getString("mem_name")+" | "+rs.getString("acd_startTime") +"~" +rs.getString("acd_endTime");
 %>
 				<%-- <p><%=sText %></p> --%>
-				<form action="../process/chkRes.jsp" onSubmit="return chk()">
+				<form action="../process/adminChkRes.jsp" onSubmit="return chk()">
 					<input type="hidden" name="date" value="<%=date %>">
 					<input type="hidden" name="acd_no" value="<%=acd_no %>">
 					<input type="hidden" name="acd_startTime" value="<%=acd_startTime %>">
-					<input type="hidden" name="mem_id" value="<%=rs.getString("mem_id")%>">
+					<input type="hidden" name="mem_id2" value="<%=mem_id2%>">
 					
 					<input type="submit" value="<%=text%>"><br>
 				</form>

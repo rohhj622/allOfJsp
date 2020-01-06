@@ -16,7 +16,8 @@
 	request.setCharacterEncoding("utf8"); 
 	//System.out.println(month);
 	
-
+	String inst = null;
+	int chkID=0; // admin ==> 0
 	String mem_id = session.getAttribute("mem_id").toString();
 
 	String date = request.getParameter("date"); // 날짜
@@ -26,9 +27,9 @@
 	String startT = request.getParameter("startT"); //시작 시간
 	String endT = request.getParameter("endT"); //끝나는 시간
 	
-	int dfl = Integer.parseInt(endT)-1;
+/* 	int dfl = Integer.parseInt(endT)-1;
 	endT = Integer.toString(dfl);
-	
+	 */
 	//System.out.println("taskRes var = "+mem_id+","+date+","+instrumentT+","+startT);
 	//System.out.println(endT);
 	
@@ -83,6 +84,29 @@
 	try{
 		Connection conn = DriverManager.getConnection(url,id,pass);
 		
+		String sql0 = "select mem_instrument from SkyMusic.member where mem_id='"+mem_id+"'";
+		//System.out.println(mem_id);
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql0);
+		ResultSet rs = pstmt.executeQuery(sql0);
+		
+		if(rs.next()){
+			inst=rs.getString("mem_instrument");
+		}
+		
+		if(inst.equals("drum")){
+			chkID=1;
+		}
+		if(inst.equals("bass")||inst.equals("guitar")){
+			inst="guitar&bass";
+			chkID=1;
+		}
+		
+		if(inst.equals("piano")||inst.equals("vocal")){
+			inst="piano&vocal";
+			chkID=1;
+		}	
+		
 		
 		if(placeNo.equals("1")){
 			sql1 = "select * from SkyMusic.academy where acd_no like '%_a%' and acd_name='"+instrumentT
@@ -95,8 +119,8 @@
 		System.out.println(sql1);
 		/* 1 */ 
 		
-		PreparedStatement pstmt = conn.prepareStatement(sql1);
-		ResultSet rs = pstmt.executeQuery(sql1);	
+		pstmt = conn.prepareStatement(sql1);
+		rs = pstmt.executeQuery(sql1);	
 
 		ArrayList<String> al = new ArrayList<String>();
 		ArrayList<String> al2 = new ArrayList<String>(); /* 겹치는거 걸러짐 */
@@ -164,7 +188,11 @@
 	%>
 			<script>
 				alert("예약되었습니다.");
-				location.href="../page/admin00.jsp";
+				if(<%=chkID%>==0){
+					location.href="../page/admin00.jsp";				
+				}else{
+					location.href="../page/teacher01.jsp";
+				}
 			</script>
 	<% 
 			
@@ -174,7 +202,7 @@
 		System.out.println("여기"+e);
 	}
 	
-%>
+	%>
 	
 
 </body>

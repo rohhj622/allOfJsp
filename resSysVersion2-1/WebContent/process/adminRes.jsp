@@ -16,9 +16,8 @@
 </head>
 <body>
 <%
-	int weekday; //0~4 평일, 5~6 주말
-	String isWeek;
-	String instrument;
+	String instrument=null;
+	int checkI = 0; // 0 : ㅇㄱ
 
 	/* 
 		1. 날짜 클릭한거에 맞춰서 그사람의 내역 보여주기.
@@ -63,12 +62,34 @@
 		/* 1 Drum */
 		Connection conn = DriverManager.getConnection(url,id,pass);
 		
+		/* 2 */
+		String sql0 = "select mem_instrument from SkyMusic.member where mem_id='"+mem_id+"'";
+		//System.out.println(mem_id);
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql0);
+		ResultSet rs = pstmt.executeQuery(sql0);
+		int acdCnt=0; // 연습실 개수
+		
+		if(rs.next()){
+			instrument = rs.getString(1);		
+		}
+		
+		if(instrument.equals("bass")||instrument.equals("guitar")){
+			instrument="guitar&bass";
+			checkI = 1;
+		}
+		
+		if(instrument.equals("piano")||instrument.equals("vocal")){
+			instrument="piano&vocal";
+			checkI=2;
+		}
+		
 		//String sql = "select * from SkyMusic.academy where acd_no in(select acd_no from SkyMusic.reservation where res_date = '"+date+"' order by acd_startTime);";
 		String  sql = "SELECT mem_name,acd_startTime,acd_endTime,mem_instrument,acd_no,mem_id"+
 						" FROM SkyMusic.reservation natural join SkyMusic.member natural join SkyMusic.academy "+
 						"where res_date ='"+date+"' and SkyMusic.reservation.acd_no like 'D_a%' order by acd_startTime,mem_name";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		ResultSet rs = pstmt.executeQuery();
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
 		
 		/* 예약 내역이 없이비어있다면  */
 		if(rs.next()==false){
@@ -80,16 +101,17 @@
 			do{
 				String acd_no = rs.getString("acd_no");
 				String acd_startTime =rs.getString("acd_startTime"); 
-				System.out.println(acd_startTime);
+				String mem_id2= rs.getString("mem_id");
+				//System.out.println(acd_startTime);
 
 				String text = rs.getString("mem_name")+" | "+rs.getString("acd_startTime") +"~" +rs.getString("acd_endTime");
 %>
-				<%-- <p><%=sText %></p> --%>
-				<form action="../process/adminchkRes.jsp" onSubmit="return chk()">
+
+				<form action="../process/adminChkRes.jsp" onSubmit="return chk()">
 					<input type="hidden" name="date" value="<%=date %>">
 					<input type="hidden" name="acd_no" value="<%=acd_no %>">
 					<input type="hidden" name="acd_startTime" value="<%=acd_startTime %>">
-					<input type="hidden" name="mem_id" value="<%=rs.getString("mem_id")%>">
+					<input type="hidden" name="mem_id2" value="<%=mem_id2%>">
 					
 					<input type="submit" value="<%=text%>"><br>
 				</form>
@@ -118,16 +140,17 @@
 			do{
 				String acd_no = rs.getString("acd_no");
 				String acd_startTime =rs.getString("acd_startTime"); 
-				System.out.println(acd_startTime);
+				String mem_id2= rs.getString("mem_id");
+				//System.out.println(acd_startTime);
 
 				String text = rs.getString("mem_name")+" | "+rs.getString("acd_startTime") +"~" +rs.getString("acd_endTime");
 %>
 				<%-- <p><%=sText %></p> --%>
-				<form action="../process/chkRes.jsp" onSubmit="return chk()">
+				<form action="../process/adminChkRes.jsp" onSubmit="return chk()">
 					<input type="hidden" name="date" value="<%=date %>">
 					<input type="hidden" name="acd_no" value="<%=acd_no %>">
 					<input type="hidden" name="acd_startTime" value="<%=acd_startTime %>">
-					<input type="hidden" name="mem_id" value="<%=rs.getString("mem_id")%>">
+					<input type="hidden" name="mem_id2" value="<%=mem_id2%>">
 					
 					<input type="submit" value="<%=text%>"><br>
 				</form>
@@ -156,16 +179,17 @@
 			do{
 				String acd_no = rs.getString("acd_no");
 				String acd_startTime =rs.getString("acd_startTime"); 
-				System.out.println(acd_startTime);
+				String mem_id2= rs.getString("mem_id");
+				//System.out.println(acd_startTime);
 
 				String text = rs.getString("mem_name")+" | "+rs.getString("acd_startTime") +"~" +rs.getString("acd_endTime");
 %>
 				<%-- <p><%=sText %></p> --%>
-				<form action="../process/chkRes.jsp" onSubmit="return chk()">
+				<form action="../process/adminChkRes.jsp" onSubmit="return chk()">
 					<input type="hidden" name="date" value="<%=date %>">
 					<input type="hidden" name="acd_no" value="<%=acd_no %>">
 					<input type="hidden" name="acd_startTime" value="<%=acd_startTime %>">
-					<input type="hidden" name="mem_id" value="<%=rs.getString("mem_id")%>">
+					<input type="hidden" name="mem_id2" value="<%=mem_id2%>">
 					
 					<input type="submit" value="<%=text%>"><br>
 				</form>

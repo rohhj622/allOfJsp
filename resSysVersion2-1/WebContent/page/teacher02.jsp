@@ -15,19 +15,24 @@
 <body>
 	<table border="1" class="tb">
 		<tr>
-			<td colspan="2">
+			<td colspan="3">
 				<jsp:include page="../header/teacherMenu.jsp"/>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<jsp:include page="../calendar5.jsp"/>
+				내역
+				<jsp:include page="../calendar6.jsp"/>
 			</td>
 			<td>
-				<p> 연속 예약 하기 </p>
-				<p> 비어있는 시간을 확인해서 예약 해주세요. </p>
+				<p>00빌딩</p>
 				<hr>
-				<jsp:include page="../process/adminResAll.jsp"/>
+				<jsp:include page="../process/teacherRes.jsp"/>
+			</td>
+			<td>
+				<p>서련빌딩</p>
+				<hr>
+				<jsp:include page="../process/teacherRes2.jsp"/>
 			</td>
 		</tr>
 	</table>

@@ -19,8 +19,13 @@
 						<jsp:include page="../header/adminMenu.jsp"/>
 					</td>
 		<%
-			}
-			else{
+			}else if(mem_id.equals("teacher")){
+				%>
+				<td>
+					<jsp:include page="../header/teacherMenu.jsp"/>
+				</td>
+	<%
+			}else{
 		%>
 					<td>
 						<jsp:include page="../header/menu.jsp"/>

@@ -22,7 +22,7 @@
 			</form>
 		</td>
 		<td>
-			<form action="user02.jsp" method="post">
+			<form action="teacher02.jsp" method="post">
 				<input id="ipM" type="submit" value="내역" >
 			</form>	
 		</td>
